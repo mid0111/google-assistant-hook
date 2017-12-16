@@ -1,0 +1,23 @@
+{
+  "name": "google-assistant-hook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint *.js **/*.js --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mid0111/google-assistant-hook.git"
+  },
+  "author": "mid0111",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mid0111/google-assistant-hook/issues"
+  },
+  "homepage": "https://github.com/mid0111/google-assistant-hook#readme",
+  "devDependencies": {
+    "eslint": "^4.13.1"
+  }
+}
