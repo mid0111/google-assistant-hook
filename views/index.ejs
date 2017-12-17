@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>
+      <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' /> </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <%= title %>
+      </a>
+    </nav>
+
+    <div class="container-fluid pt-3">
+      <% if (auth !== true) { %>
+      <p>Google Fit を利用する場合は、あらかじめ
+        <a href="/auth/google">Google にログイン</a> してください</p>
+      <% } %>
+
+      <% if (auth === true) { %>
+      <h3>Google Home に話しかけてみましょう</h3>
+      <ul>
+        <li>ねぇ Google、健康体操を開始して</li>
+        <li>ねぇ Google、健康体操を終了して</li>
+      </ul>
+      <% } %>
+    </div>
+  </body>
+
+</html>

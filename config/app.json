@@ -1,0 +1,12 @@
+{
+  "database": {
+    "name": "refined-byte-188701",
+    "path": {
+      "googleFitLog": "google-fit/log"
+    }
+  },
+  "googleFit": {
+    "dataSourceId": "derived:com.google.activity.segment:328366191555:Sony:SO-02H:16062204:LogGoogleHome",
+    "dataType": "com.google.activity.segment"
+  }
+}
