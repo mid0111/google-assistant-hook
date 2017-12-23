@@ -2,11 +2,15 @@
   "database": {
     "name": "refined-byte-188701",
     "path": {
-      "googleFitLog": "google-fit/log"
+      "googleFitLog": "google-fit/log",
+      "tvLog": "tv/log"
     }
   },
   "googleFit": {
     "dataSourceId": "derived:com.google.activity.segment:328366191555:Sony:SO-02H:16062204:LogGoogleHome",
     "dataType": "com.google.activity.segment"
+  },
+  "tv": {
+    "ip": "192.168.0.2"
   }
 }

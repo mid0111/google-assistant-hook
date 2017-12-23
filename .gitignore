@@ -60,3 +60,4 @@ typings/
 # secret
 config/serviceAccountKey.json
 config/googleClientSecret.json
+config/braviaSecret.json
