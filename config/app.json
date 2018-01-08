@@ -3,8 +3,12 @@
     "name": "refined-byte-188701",
     "path": {
       "googleFitLog": "google-fit/log",
-      "tvLog": "tv/log"
+      "tvLog": "tv/log",
+      "podcastLog": "podcast/log"
     }
+  },
+  "googleHome": {
+    "ip": "192.168.0.5"
   },
   "googleFit": {
     "dataSourceId": "derived:com.google.activity.segment:328366191555:Sony:SO-02H:16062204:LogGoogleHome",
