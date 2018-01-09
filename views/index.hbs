@@ -1,16 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    {{ title }}
-  </a>
-</nav>
-
-<div class="container-fluid pt-3">
-  {{#unless auth}}
-  <p>Google Fit を利用する場合は、あらかじめ
-    <a href="/auth/google">Google にログイン</a> してください</p>
-  {{/unless}}
+<div class="menu jumbotron">
   <h3>Google Home に話しかけてみましょう</h3>
-  <ul>
+  <ul class="pt-3">
     <li>OK Google!! テレビをつけて!</li>
     <li>OK Google!! テレビを消して!</li>
     <li>OK Google!! Rebuild fm を流して!</li>
@@ -19,4 +9,19 @@
     <li>ねぇ Google、健康体操を終了して</li>
     {{/if}}
   </ul>
+  {{#unless auth}}
+  <p>Google Fit を利用する場合は、あらかじめ
+    <a href="/auth/google">Google にログイン</a> してください</p>
+  {{/unless}}
+</div>
+
+<div class="link">
+  <div class="card" style="width: 18rem;">
+    <i class="material-icons md-120">queue_music</i>
+    <div class="card-body">
+      <h5 class="card-title">Stream Music</h5>
+      <p class="card-text">Web 上の音楽を Google Home でストリーム再生する</p>
+      <a href="/stream" class="btn btn-primary">Stream Music</a>
+    </div>
+  </div>
 </div>

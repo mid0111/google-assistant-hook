@@ -3,10 +3,11 @@ var GoogleOAuthClient = require('../lib/GoogleOAuthClient');
 
 var router = express.Router();
 
-/* GET home page. */
+router.use('/auth', require('./auth'));
+router.use('/stream', require('./stream'));
+
 router.get('/', function (req, res) {
   res.render('index', {
-    title: 'Google Assistant Hook',
     auth: GoogleOAuthClient.isAuthenticated()
   });
 });

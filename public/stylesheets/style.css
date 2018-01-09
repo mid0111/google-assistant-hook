@@ -1,8 +1,14 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.card .material-icons {
+    background-color: #868e96;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 30px 0;
 }
 
+.material-icons.md-120 {
+    font-size: 120px;
+}
