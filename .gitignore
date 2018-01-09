@@ -58,6 +58,6 @@ typings/
 .env
 
 # secret
-config/serviceAccountKey.json
-config/googleClientSecret.json
-config/braviaSecret.json
+server/config/serviceAccountKey.json
+server/config/googleClientSecret.json
+server/config/braviaSecret.json

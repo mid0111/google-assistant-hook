@@ -32,7 +32,7 @@ log4js.configure({
 
 class Logger {
   static connectLogger() {
-    return log4js.connectLogger(log4js.getLogger('access'), { level: 'info' });
+    return log4js.connectLogger(log4js.getLogger('access'), {level: 'info'});
   }
 
   constructor() {

@@ -38,7 +38,8 @@ class Podcast {
       .on('error', (error) => callback(error))
       .pipe(feedparser);
 
-    feedparser.on('error', (error) => callback(error))
+    feedparser
+      .on('error', (error) => callback(error))
       .on('readable', () => {
         let item = null;
         while ((item = feedparser.read())) {
