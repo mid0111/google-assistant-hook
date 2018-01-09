@@ -1,7 +1,9 @@
 var express = require('express');
 var GoogleOAuthClient = require('../lib/GoogleOAuthClient');
+var Logger = require('../lib/Logger');
 
 var router = express.Router();
+var logger = new Logger();
 
 var oauth2Client = GoogleOAuthClient.getClient();
 var scopes = [
@@ -30,12 +32,12 @@ router.get('/google/callback', function (req, res, next) {
   // トークンが有効期限切れの場合は自動的にライブラリ内でリフレッシュトークンを取り直してくれる
   oauth2Client.getToken(req.query.code, function (err, tokens) {
     if (err) {
-      console.error('Failed to get token.');
+      logger.error('Failed to get token.');
       return next(err);
     }
     if (!err) {
       oauth2Client.credentials = tokens;
-      console.log(oauth2Client.credentials);
+      logger.info(oauth2Client.credentials);
     }
 
     res.redirect('/');
