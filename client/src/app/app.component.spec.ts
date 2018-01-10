@@ -5,7 +5,7 @@ import { of } from 'rxjs/observable/of';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
-import { ProfileService } from './profile.service';
+import { ProfileService } from './models/profile.service';
 
 describe('AppComponent', () => {
   const profileServiceStub = {

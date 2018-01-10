@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { AppSettings } from './app.settings';
+import { AppSettings } from '../app.settings';
 
 export interface Profile {
   authenticated: Boolean;

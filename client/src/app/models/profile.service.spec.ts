@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ProfileService, Profile } from './profile.service';
-import { AppSettings } from './app.settings';
+import { AppSettings } from '../app.settings';
 
 describe('ProfileService', () => {
   let injector: TestBed;

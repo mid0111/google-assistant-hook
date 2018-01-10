@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
-import { ProfileService } from './profile.service';
+import { ProfileService } from './models/profile.service';
 
 
 @NgModule({
