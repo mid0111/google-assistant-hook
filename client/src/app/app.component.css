@@ -1,5 +1,10 @@
-h1 {
-    color: #369;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 250%;
+.card .material-icons {
+    background-color: #868e96;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.material-icons.md-120 {
+    font-size: 120px;
 }
