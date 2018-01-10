@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
 import { ProfileService } from './models/profile.service';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenusComponent
+    MenusComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

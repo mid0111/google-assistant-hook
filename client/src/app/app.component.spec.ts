@@ -1,10 +1,10 @@
-import { } from 'jasmine';
 
 import { TestBed, async } from '@angular/core/testing';
 import { of } from 'rxjs/observable/of';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
+import { NavComponent } from './nav/nav.component';
 import { ProfileService } from './models/profile.service';
 
 describe('AppComponent', () => {
@@ -15,7 +15,9 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, MenusComponent
+        AppComponent,
+        MenusComponent,
+        NavComponent
       ],
       providers: [{
         provide: ProfileService, useValue: profileServiceStub
@@ -23,9 +25,10 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
+  it('app が作成されること', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
+    expect(app.title).toBe('Google Assistant Hook');
   }));
 });
