@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService, Profile } from '../models/profile.service';
+import { ProfileService, Profile } from '../model/profile.service';
 
 @Component({
   selector: 'app-menus',

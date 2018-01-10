@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { MenusComponent } from './menus.component';
-import { ProfileService } from '../models/profile.service';
+import { ProfileService } from '../model/profile.service';
 import { of } from 'rxjs/observable/of';
 
 let component: MenusComponent;

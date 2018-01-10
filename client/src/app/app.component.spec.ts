@@ -3,9 +3,9 @@ import { TestBed, async } from '@angular/core/testing';
 import { of } from 'rxjs/observable/of';
 
 import { AppComponent } from './app.component';
-import { MenusComponent } from './menus/menus.component';
+import { MenusComponent } from './menu/menus.component';
 import { NavComponent } from './nav/nav.component';
-import { ProfileService } from './models/profile.service';
+import { ProfileService } from './model/profile.service';
 
 describe('AppComponent', () => {
   const profileServiceStub = {

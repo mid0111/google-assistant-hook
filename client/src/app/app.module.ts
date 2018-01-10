@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { MenusComponent } from './menus/menus.component';
-import { ProfileService } from './models/profile.service';
+import { MenusComponent } from './menu/menus.component';
+import { ProfileService } from './model/profile.service';
 import { NavComponent } from './nav/nav.component';
 
 
