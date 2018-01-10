@@ -1,23 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-import { MenusComponent } from './menu/menus.component';
 import { NavComponent } from './nav/nav.component';
-import { ExtensionsComponent } from './extension/extensions.component';
-
+import { StreamExtensionComponent } from './extension/stream-extension.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenusComponent,
     NavComponent,
-    ExtensionsComponent,
+    StreamExtensionComponent,
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
+    HomeModule,
   ],
   bootstrap: [AppComponent],
 })

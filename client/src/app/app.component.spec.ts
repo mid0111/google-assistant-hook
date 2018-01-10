@@ -1,22 +1,28 @@
 
 import { TestBed, async } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
 
+import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-import { MenusComponent } from './menu/menus.component';
 import { NavComponent } from './nav/nav.component';
-import { ExtensionsComponent } from './extension/extensions.component';
+import { StreamExtensionComponent } from './extension/stream-extension.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MenusComponent,
         NavComponent,
-        ExtensionsComponent,
+        StreamExtensionComponent,
       ],
-      imports: [HttpClientModule],
+      imports: [
+        AppRoutingModule,
+        HomeModule,
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
+      ],
     }).compileComponents();
   }));
 
