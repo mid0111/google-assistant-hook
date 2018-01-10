@@ -1,27 +1,22 @@
 
 import { TestBed, async } from '@angular/core/testing';
-import { of } from 'rxjs/observable/of';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menu/menus.component';
 import { NavComponent } from './nav/nav.component';
-import { ProfileService } from './model/profile.service';
+import { ExtensionsComponent } from './extension/extensions.component';
 
 describe('AppComponent', () => {
-  const profileServiceStub = {
-    getProfile: () => of({ authenticated: false })
-  };
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         MenusComponent,
-        NavComponent
+        NavComponent,
+        ExtensionsComponent
       ],
-      providers: [{
-        provide: ProfileService, useValue: profileServiceStub
-      }]
+      imports: [HttpClientModule],
     }).compileComponents();
   }));
 

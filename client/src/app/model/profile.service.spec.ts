@@ -1,7 +1,8 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { ProfileService, Profile } from './profile.service';
+import { ProfileService } from './profile.service';
+import { Profile } from './profile';
 import { AppSettings } from '../app.settings';
 
 describe('ProfileService', () => {

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService, Profile } from '../model/profile.service';
+import { ProfileService } from '../model/profile.service';
+import { Profile } from '../model/profile';
 
 @Component({
   selector: 'app-menus',
   templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.css']
+  styleUrls: ['./menus.component.css'],
+  providers: [
+    ProfileService
+  ]
 })
 export class MenusComponent implements OnInit {
   profile: Profile = {

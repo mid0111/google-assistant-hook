@@ -4,10 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { AppSettings } from '../app.settings';
-
-export interface Profile {
-  authenticated: Boolean;
-}
+import { Profile } from './profile';
 
 @Injectable()
 export class ProfileService {
