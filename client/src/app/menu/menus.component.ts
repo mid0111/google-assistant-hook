@@ -7,12 +7,12 @@ import { Profile } from '../model/profile';
   templateUrl: './menus.component.html',
   styleUrls: ['./menus.component.css'],
   providers: [
-    ProfileService
-  ]
+    ProfileService,
+  ],
 })
 export class MenusComponent implements OnInit {
   profile: Profile = {
-    authenticated: false
+    authenticated: false,
   };
 
   constructor(private profileService: ProfileService) {

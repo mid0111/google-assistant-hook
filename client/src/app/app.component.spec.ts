@@ -14,7 +14,7 @@ describe('AppComponent', () => {
         AppComponent,
         MenusComponent,
         NavComponent,
-        ExtensionsComponent
+        ExtensionsComponent,
       ],
       imports: [HttpClientModule],
     }).compileComponents();

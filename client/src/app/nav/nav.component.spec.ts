@@ -19,7 +19,7 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     createComponent({
-      authenticated: false
+      authenticated: false,
     });
   }));
 

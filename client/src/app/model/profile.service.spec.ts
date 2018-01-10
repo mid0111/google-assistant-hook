@@ -13,7 +13,7 @@ describe('ProfileService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService]
+      providers: [ProfileService],
     });
     injector = getTestBed();
     service = injector.get(ProfileService);
@@ -27,7 +27,7 @@ describe('ProfileService', () => {
 
   it('Profile を取得できること', () => {
     const mockProfile: Profile = {
-      authenticated: true
+      authenticated: true,
     };
 
     service.getProfile().subscribe((profile) => {

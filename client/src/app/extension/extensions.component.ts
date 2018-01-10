@@ -8,8 +8,8 @@ import { Extension } from '../model/extension';
   templateUrl: './extensions.component.html',
   styleUrls: ['./extensions.component.css'],
   providers: [
-    ExtensionService
-  ]
+    ExtensionService,
+  ],
 })
 export class ExtensionsComponent implements OnInit {
   extensions: Extension[];

@@ -18,14 +18,14 @@ const mockExtensions: Extension[] = [{
   title: 'Stream Music',
   description: 'Web 上の音楽を Google Home でストリーム再生する',
   path: '/stream',
-  btnName: 'Stream Music'
+  btnName: 'Stream Music',
 }];
 
 describe('ExtensionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ExtensionsComponent]
+      declarations: [ExtensionsComponent],
     })
       .compileComponents();
   }));

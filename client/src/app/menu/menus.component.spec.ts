@@ -18,7 +18,7 @@ describe('MenusComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MenusComponent],
-      imports: [HttpClientModule]
+      imports: [HttpClientModule],
     })
       .compileComponents();
   }));
@@ -27,7 +27,7 @@ describe('MenusComponent', () => {
 
     beforeEach(async(() => {
       createComponent({
-        authenticated: false
+        authenticated: false,
       });
     }));
 
@@ -48,7 +48,7 @@ describe('MenusComponent', () => {
 
     beforeEach(async(() => {
       createComponent({
-        authenticated: true
+        authenticated: true,
       });
     }));
 

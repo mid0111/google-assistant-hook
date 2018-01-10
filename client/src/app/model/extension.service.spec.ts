@@ -15,7 +15,7 @@ describe('ExtensionService', () => {
         title: 'Stream Music',
         description: 'Web 上の音楽を Google Home でストリーム再生する',
         path: '/stream',
-        btnName: 'Stream Music'
+        btnName: 'Stream Music',
       });
     });
   });

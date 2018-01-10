@@ -13,12 +13,12 @@ import { ExtensionsComponent } from './extension/extensions.component';
     AppComponent,
     MenusComponent,
     NavComponent,
-    ExtensionsComponent
+    ExtensionsComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
