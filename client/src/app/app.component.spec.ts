@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { StreamExtensionComponent } from './extension/stream-extension.component';
+import { StreamModule } from './stream/stream.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,11 +14,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavComponent,
-        StreamExtensionComponent,
       ],
       imports: [
         AppRoutingModule,
         HomeModule,
+        StreamModule,
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
