@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ExtensionService } from '../model/extension.service';
-import { Extension } from '../model/extension';
+import { ExtensionService } from '../../model/extension.service';
+import { Extension } from '../../model/extension';
 
 @Component({
   selector: 'app-extensions',

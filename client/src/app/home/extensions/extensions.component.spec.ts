@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { of } from 'rxjs/observable/of';
 
 import { ExtensionsComponent } from './extensions.component';
-import { Extension } from '../model/extension';
-import { ExtensionService } from '../model/extension.service';
+import { Extension } from '../../model/extension';
+import { ExtensionService } from '../../model/extension.service';
 
 let component: ExtensionsComponent;
 let fixture: ComponentFixture<ExtensionsComponent>;

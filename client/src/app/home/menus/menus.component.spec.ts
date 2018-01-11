@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MenusComponent } from './menus.component';
-import { ProfileService } from '../model/profile.service';
+import { ProfileService } from '../../model/profile.service';
 import { of } from 'rxjs/observable/of';
 
 let component: MenusComponent;
