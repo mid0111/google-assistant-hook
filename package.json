@@ -39,6 +39,7 @@
     "google-home-notifier": "^1.2.0",
     "googleapis": "^23.0.0",
     "hbs": "^4.0.1",
+    "http-status": "^1.0.1",
     "jquery": "^3.2.1",
     "log4js": "^2.4.1",
     "material-design-icons": "^3.0.1",
