@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { StreamFormComponent } from './stream-form.component';
+import { MessageService } from '../../model/message.service';
 
 describe('StreamFormComponent', () => {
   let component: StreamFormComponent;
@@ -14,6 +15,9 @@ describe('StreamFormComponent', () => {
       imports: [
         HttpClientModule,
         FormsModule,
+      ],
+      providers: [
+        MessageService,
       ],
     })
       .compileComponents();

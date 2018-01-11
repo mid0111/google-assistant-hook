@@ -1,0 +1,9 @@
+<div class="alert-container clearfix">
+  <div *ngFor="let message of messages; index as index" class="alert alert-{{message.type}}" role="alert">
+    <div (click)="onClose(index)" class="float-right btn">
+      <i class="material-icons">close</i>
+    </div>
+    <div class="message">{{message.message}}</div>
+    <div *ngIf="message.detail" class="detail">{{message.detail}}</div>
+  </div>
+</div>

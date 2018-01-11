@@ -3,9 +3,11 @@ import { TestBed, async } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MessageService } from './model/message.service';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
+import { MessageComponent } from './message/message.component';
 import { StreamModule } from './stream/stream.module';
 
 describe('AppComponent', () => {
@@ -14,6 +16,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavComponent,
+        MessageComponent,
       ],
       imports: [
         AppRoutingModule,
@@ -22,6 +25,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
+        MessageService,
       ],
     }).compileComponents();
   }));
