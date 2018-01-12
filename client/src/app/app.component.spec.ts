@@ -2,6 +2,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
+import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppSettings } from './app.settings';
 import { MessageService } from './model/message.service';
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         MessageComponent,
       ],
       imports: [
+        SharedModule,
         AppRoutingModule,
         HomeModule,
         StreamModule,

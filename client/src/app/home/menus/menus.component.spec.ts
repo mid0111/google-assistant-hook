@@ -3,8 +3,8 @@ import { } from 'jasmine';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
+import { SharedModule } from '../../shared/shared.module';
 import { MenusComponent } from './menus.component';
 import { ProfileService } from '../../model/profile.service';
 import { of } from 'rxjs/observable/of';
@@ -18,7 +18,7 @@ describe('MenusComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MenusComponent],
-      imports: [HttpClientModule],
+      imports: [SharedModule],
     })
       .compileComponents();
   }));

@@ -1,6 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { SharedModule } from '../shared/shared.module';
 import { StreamService } from './stream.service';
 import { Stream } from './stream';
 import { AppSettings } from '../app.settings';
@@ -12,7 +13,10 @@ describe('StreamService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        SharedModule,
+      ],
       providers: [StreamService],
     });
     injector = getTestBed();

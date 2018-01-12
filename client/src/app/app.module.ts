@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { MessageService } from './model/message.service';
+import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -20,8 +19,7 @@ import { MessageComponent } from './message/message.component';
     MessageService,
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
+    SharedModule,
     AppRoutingModule,
     HomeModule,
     StreamModule,

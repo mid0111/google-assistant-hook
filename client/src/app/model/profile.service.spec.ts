@@ -1,6 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { SharedModule } from '../shared/shared.module';
 import { ProfileService } from './profile.service';
 import { Profile } from './profile';
 import { AppSettings } from '../app.settings';
@@ -12,7 +13,10 @@ describe('ProfileService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        SharedModule,
+      ],
       providers: [ProfileService],
     });
     injector = getTestBed();

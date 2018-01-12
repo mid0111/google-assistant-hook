@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './home.component';
 import { MenusComponent } from './menus/menus.component';
 import { ExtensionsComponent } from './extensions/extensions.component';
-import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { HomeComponent } from './home.component';
     ExtensionsComponent,
   ],
   imports: [
-    BrowserModule,
+    SharedModule,
   ],
 })
 export class HomeModule { }

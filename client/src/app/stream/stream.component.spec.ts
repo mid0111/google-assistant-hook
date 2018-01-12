@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { StreamComponent } from './stream.component';
 import { StreamFormComponent } from './stream-form/stream-form.component';
 import { MessageService } from '../model/message.service';
@@ -19,6 +20,7 @@ describe('StreamComponent', () => {
       imports: [
         HttpClientModule,
         FormsModule,
+        SharedModule,
       ],
       providers: [
         MessageService,

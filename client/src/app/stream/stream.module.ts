@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { StreamComponent } from './stream.component';
 import { StreamFormComponent } from './stream-form/stream-form.component';
 
@@ -11,7 +11,7 @@ import { StreamFormComponent } from './stream-form/stream-form.component';
     StreamFormComponent,
   ],
   imports: [
-    BrowserModule,
+    SharedModule,
     FormsModule,
   ],
 })
