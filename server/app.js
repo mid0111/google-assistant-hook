@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 // var favicon = require('serve-favicon');
-var logger = require('morgan');
 var AccessLogger = require('./lib/Logger');
 
 var cookieParser = require('cookie-parser');
@@ -15,7 +14,6 @@ app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(AccessLogger.connectLogger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -25,11 +23,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
-app.all('/*', function(req, res) {
+app.all('/*', function (req, res) {
   // Just send the index.html for other files to support HTML5Mode
   res.sendFile('index.html', {
-     root: path.join(__dirname, 'public')
-    });
+    root: path.join(__dirname, 'public')
+  });
 });
 
 // catch 404 and forward to error handler
