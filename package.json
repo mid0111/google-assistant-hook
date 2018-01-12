@@ -6,7 +6,7 @@
     "build": "npm run build:client",
     "build:client": "ng build --prod",
     "serve": "concurrently \"npm run serve:server\" \"npm run serve:client\"",
-    "serve:server": "node ./server/bin/www",
+    "serve:server": "nodemon ./server/bin/www",
     "serve:client": "ng serve --proxy-config client/proxy.conf.json",
     "start": "NODE_ENV=production node ./server/bin/www",
     "test": "npm run test:client",
@@ -15,6 +15,12 @@
     "lint:server": "eslint server/**/*.js --fix",
     "lint:client": "ng lint --fix",
     "e2e": "ng e2e"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client",
+      "log"
+    ]
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -67,6 +73,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "nodemon": "^1.14.11",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
