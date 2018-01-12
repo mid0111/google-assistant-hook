@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { AppStreamPage } from './app-stream.po';
 
 describe('google-assistant-hook app-stream', () => {

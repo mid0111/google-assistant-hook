@@ -1,5 +1,4 @@
 import { browser, by, element, ElementFinder } from 'protractor';
-import { ElementArrayFinder } from 'protractor/built/element';
 
 export class AppStreamPage {
   title: ElementFinder;
