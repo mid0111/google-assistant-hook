@@ -10,7 +10,7 @@
     "serve:client": "ng serve --proxy-config client/proxy.conf.json",
     "start": "NODE_ENV=production node ./server/bin/www",
     "test": "npm run test:client",
-    "test:client": "ng test",
+    "test:client": "ng test --watch=false --code-coverage",
     "lint": "npm run lint:server && npm run lint:client",
     "lint:server": "eslint server/**/*.js --fix",
     "lint:client": "ng lint --fix",
