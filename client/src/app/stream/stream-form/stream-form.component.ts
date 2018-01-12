@@ -24,7 +24,7 @@ export class StreamFormComponent implements OnInit {
       url: this.streamUrl,
     })
       .subscribe(
-      (res) => {
+      () => {
         this.streamUrl = undefined;
         this.messageService.set({
           message: 'ストリームの再生を開始しました。',
