@@ -30,7 +30,7 @@ describe('google-assistant-hook app-home', () => {
     browser.waitForAngularEnabled(false);
     page.loginLink.click();
 
-    browser.sleep(500);
+    browser.sleep(3000);
     expect(browser.getCurrentUrl()).toMatch(/https:\/\/accounts.google.com\/.*/);
   });
 
