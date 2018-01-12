@@ -1,8 +1,9 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
-import { AppRoutingModule } from './app-routing.module';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppSettings } from './app.settings';
 import { MessageService } from './model/message.service';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-    expect(app.title).toBe('Google Assistant Hook');
+    expect(app.title).toBe(AppSettings.APP_TITLE);
   }));
 });
