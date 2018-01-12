@@ -20,6 +20,7 @@ router.post('/', function (req, res) {
       res.status(503).json({
         message: error.message || HttpStatus[503]
       });
+      return;
     }
     if (streamResponse.statusCode >= 400) {
       res.status(streamResponse.statusCode).json({
