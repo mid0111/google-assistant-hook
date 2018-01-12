@@ -8,6 +8,7 @@ import { StreamService } from '../../model/stream.service';
 import { MessageService } from '../../model/message.service';
 import { MessageType } from '../../model/message';
 import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
 
 let component: StreamFormComponent;
 let fixture: ComponentFixture<StreamFormComponent>;
@@ -40,6 +41,8 @@ describe('StreamFormComponent', () => {
   it('URL を入力すると再生ボタンが押下できること', async(() => {
     const requestUrl = 'http://dummy.com/dummy.mp3';
     spyOn(messageService, 'set');
+    spyOn(streamService, 'play')
+      .and.returnValue(of(null));
 
     expect(page.submitButton.hasAttribute('disabled')).toBeTruthy();
 
@@ -70,6 +73,44 @@ describe('StreamFormComponent', () => {
     });
   }));
 
+  it('再生でエラーが発生した場合エラーメッセージがセットされること', async(() => {
+    const requestUrl = 'http://dummy.com/dummy.mp3';
+    const testError = new Error('Test error');
+    spyOn(messageService, 'set');
+    spyOn(streamService, 'play')
+      .and.returnValue(new Observable(
+        (subscriber) => subscriber.error(testError)));
+
+    expect(page.submitButton.hasAttribute('disabled')).toBeTruthy();
+
+    page.urlInput.value = requestUrl;
+    page.urlInput.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      page.addPageElements();
+
+      expect(page.urlInput.value).toBe(requestUrl);
+      expect(page.submitButton.hasAttribute('disabled')).toBeFalsy();
+
+      page.submitButton.click();
+      fixture.detectChanges();
+      return fixture.whenStable();
+    }).then(() => {
+      fixture.detectChanges(); // ngForm 用
+      page.addPageElements();
+
+      expect(page.urlInput.value).toBe(requestUrl);
+      expect(page.submitButton.hasAttribute('disabled')).toBeFalsy();
+
+      expect(messageService.set).toHaveBeenCalledWith({
+        message: 'ストリームの再生に失敗しました。',
+        type: MessageType.ERROR,
+        error: testError,
+      });
+    });
+  }));
+
 });
 
 class Page {
@@ -87,9 +128,6 @@ function createComponent(testProfile) {
   component = fixture.componentInstance;
   streamService = fixture.debugElement.injector.get(StreamService);
   messageService = fixture.debugElement.injector.get(MessageService);
-
-  spyOn(streamService, 'play')
-    .and.returnValue(of(null));
 
   page = new Page();
 
