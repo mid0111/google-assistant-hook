@@ -12,10 +12,16 @@
     "test": "rm -rf ./coverage && npm run test:client",
     "test:client": "ng test --watch=false --code-coverage",
     "coveralls": "cat ./coverage/client/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "format": "npm run format:server && npm run format:client",
+    "format:server": "eslint server/**/*.js",
+    "format:client": "ng lint",
     "lint": "npm run lint:server && npm run lint:client",
     "lint:server": "eslint server/**/*.js --fix",
     "lint:client": "ng lint --fix",
-    "e2e": "ng e2e"
+    "e2e": "npm run e2e:serve && npm run e2e:test",
+    "e2e:serve": "npm run serve:server &",
+    "e2e:test": "ng e2e --proxy-config client/proxy.conf.json",
+    "poste2e": "kill $(ps -ef | grep nodemo[n] | awk '{print $2}') && exit $EXIT_CODE"
   },
   "nodemonConfig": {
     "ignore": [

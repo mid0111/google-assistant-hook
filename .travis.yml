@@ -13,9 +13,10 @@ before_install:
   # ../src/mdns.hpp:32:20: fatal error: dns_sd.h: No such file or directory
   - sudo apt-get install -y libavahi-compat-libdnssd-dev
 
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+script:
+  - npm run lint
+  - npm test
+  - npm run e2e
 
 after_success:
   - npm run coveralls
