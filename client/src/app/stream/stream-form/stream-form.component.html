@@ -1,0 +1,6 @@
+<form (ngSubmit)="onSubmit()" #streamForm="ngForm">
+  <div class="form-group mb-3">
+    <input [(ngModel)]="streamUrl" required type="text" class="form-control" id="streamUrl" name="streamUrl" placeholder="URL">
+  </div>
+  <button [disabled]="!streamForm.form.valid" type="submit" class="btn btn-primary">再生</button>
+</form>

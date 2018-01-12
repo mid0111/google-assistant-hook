@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+*.log.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -58,6 +59,9 @@ typings/
 .env
 
 # secret
-config/serviceAccountKey.json
-config/googleClientSecret.json
-config/braviaSecret.json
+server/config/serviceAccountKey.json
+server/config/googleClientSecret.json
+server/config/braviaSecret.json
+
+# build module
+server/public/
