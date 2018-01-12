@@ -13,5 +13,9 @@ before_install:
   # ../src/mdns.hpp:32:20: fatal error: dns_sd.h: No such file or directory
   - sudo apt-get install -y libavahi-compat-libdnssd-dev
 
+scripts:
+  - npm test
+  - npm run e2e
+
 after_success:
   - npm run coveralls
