@@ -5,7 +5,7 @@ import { Profile } from '../../model/profile';
 @Component({
   selector: 'app-menus',
   templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.css'],
+  styleUrls: ['./menus.component.scss'],
   providers: [
     ProfileService,
   ],

@@ -7,7 +7,7 @@ import { MessageType } from '../../model/message';
 @Component({
   selector: 'app-stream-form',
   templateUrl: './stream-form.component.html',
-  styleUrls: ['./stream-form.component.css'],
+  styleUrls: ['./stream-form.component.scss'],
   providers: [
     StreamService,
   ],

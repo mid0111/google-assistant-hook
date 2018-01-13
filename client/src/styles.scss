@@ -2,10 +2,10 @@
 
 button,
 .btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button[disabled],
 .btn[disabled] {
-    cursor: default;
+  cursor: default;
 }
