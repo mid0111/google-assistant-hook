@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "./app/shared/custom.scss";
+
 button,
 .btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button[disabled],
 .btn[disabled] {
-    cursor: default;
+  cursor: default;
 }

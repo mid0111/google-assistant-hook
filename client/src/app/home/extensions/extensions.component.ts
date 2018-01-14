@@ -6,7 +6,7 @@ import { Extension } from '../../model/extension';
 @Component({
   selector: 'app-extensions',
   templateUrl: './extensions.component.html',
-  styleUrls: ['./extensions.component.css'],
+  styleUrls: ['./extensions.component.scss'],
   providers: [
     ExtensionService,
   ],
