@@ -25,6 +25,25 @@ class Podcast {
     });
   }
 
+  static getPodcasts(feedUrl, callback) {
+    this.parseRssFeed(feedUrl, (error, rssItems) => {
+      if (error) {
+        logger.error('Failed to parse rss feed.', error);
+        return callback(error);
+      }
+      const podcasts = rssItems.map((rssItem) => {
+        const enclosure = rssItem.enclosures[0];
+        return {
+          title: rssItem.title,
+          subTitle: rssItem['itunes:subtitle']['#'],
+          pubDate: rssItem.pubDate,
+          url: enclosure.url
+        };
+      });
+      return callback(null, podcasts);
+    });
+  }
+
   static parseRssFeed(url, callback) {
     const feedparser = new FeedParser();
     const rssItems = [];
@@ -46,7 +65,7 @@ class Podcast {
           rssItems.push(item);
         }
       })
-      .on('end', function () {
+      .on('end', function() {
         return callback(null, rssItems);
       });
   }
