@@ -4,7 +4,7 @@ const googleHome = require('google-home-notifier');
 
 const Request = require('../lib/request');
 
-describe('/api/rebuild', () => {
+describe('/api/stream', () => {
   const request = new Request();
   let sandbox = null;
 

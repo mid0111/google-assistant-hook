@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const Request = require('../lib/request');
 const GoogleOAuthClient = require('../../lib/GoogleOAuthClient');
 
-describe('/api/rebuild', () => {
+describe('/api/profile', () => {
   const request = new Request();
   let sandbox = null;
 

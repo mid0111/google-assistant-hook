@@ -23,22 +23,20 @@ var oauthUrl = oauth2Client.generateAuthUrl({
   scope: scopes
 });
 
-router.get('/google', function (req, res) {
+router.get('/google', function(req, res) {
   res.redirect(oauthUrl);
 });
 
-router.get('/google/callback', function (req, res, next) {
+router.get('/google/callback', function(req, res, next) {
   // トークン取得
   // トークンが有効期限切れの場合は自動的にライブラリ内でリフレッシュトークンを取り直してくれる
-  oauth2Client.getToken(req.query.code, function (err, tokens) {
+  oauth2Client.getToken(req.query.code, function(err, tokens) {
     if (err) {
       logger.error('Failed to get token.');
       return next(err);
     }
-    if (!err) {
-      oauth2Client.credentials = tokens;
-      logger.info(oauth2Client.credentials);
-    }
+    oauth2Client.credentials = tokens;
+    logger.info(oauth2Client.credentials);
 
     res.redirect('/');
   });
