@@ -12,8 +12,12 @@ class Request {
     return nock(url);
   }
 
-  get(path) {
-    return this.request.get(path);
+  get(...args) {
+    return this.request.get(args);
+  }
+
+  post(...args) {
+    return this.request.post(args);
   }
 }
 
