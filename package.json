@@ -9,7 +9,8 @@
     "serve:server": "nodemon ./server/bin/www",
     "serve:client": "ng serve --proxy-config client/proxy.conf.json",
     "start": "NODE_ENV=production node ./server/bin/www",
-    "test": "rm -rf ./coverage && npm run test:client",
+    "test": "rm -rf ./coverage && npm run test:server && npm run test:client",
+    "test:server": "nyc --reporter=lcov --report-dir=coverage/server --exclude=server/test/** mocha server/test/**/*.spec.js --exit",
     "test:client": "ng test --watch=false --code-coverage",
     "coveralls": "cat ./coverage/client/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "format": "npm run format:server && npm run format:client",
@@ -25,6 +26,7 @@
   },
   "nodemonConfig": {
     "ignore": [
+      "server/test",
       "client",
       "log"
     ]
@@ -83,8 +85,12 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "mocha": "^4.1.0",
+    "nock": "^9.1.6",
     "nodemon": "^1.14.11",
+    "nyc": "^11.4.1",
     "protractor": "~5.1.2",
+    "supertest": "^3.0.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
