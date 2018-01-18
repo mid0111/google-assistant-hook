@@ -1,5 +1,4 @@
 const assert = require('assert');
-const sinon = require('sinon');
 
 const Request = require('./lib/request');
 const GoogleOAuthClient = require('../lib/GoogleOAuthClient');
