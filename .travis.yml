@@ -12,11 +12,14 @@ addons:
 before_install:
   # ../src/mdns.hpp:32:20: fatal error: dns_sd.h: No such file or directory
   - sudo apt-get install -y libavahi-compat-libdnssd-dev
+  # Create the dummy setting file for test.
+  - cp ./server/config/googleClientSecret.json.sample ./server/config/googleClientSecret.json
+  - cp ./server/config/braviaSecret.json.sample ./server/config/braviaSecret.json.json
+  - cp ./server/config/serviceAccountKey.json.sample ./server/config/serviceAccountKey.json
 
 script:
   - npm run lint
   - npm test
-  - npm run e2e
 
 after_success:
   - npm run coveralls

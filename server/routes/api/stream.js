@@ -13,16 +13,26 @@ googleHome.ip(ip, lang);
 const router = express.Router();
 const logger = new Logger();
 
-router.post('/', function (req, res) {
+router.post('/', function(req, res) {
   const streamUrl = req.body.url;
+  if (!streamUrl) {
+    logger.error('Stream url is required.');
+    res.status(400).json({
+      message: 'Stream url is required.'
+    });
+    return;
+  }
+
   request.get(streamUrl, (error, streamResponse) => {
     if (error) {
+      logger.error('Failed to check stream url.', error);
       res.status(503).json({
         message: error.message || HttpStatus[503]
       });
       return;
     }
     if (streamResponse.statusCode >= 400) {
+      logger.error(`Stream url is invalid. ${streamResponse.statusCode} ${streamResponse.body}`);
       res.status(streamResponse.statusCode).json({
         message: streamResponse.body || HttpStatus[streamResponse.statusCode]
       });
@@ -35,6 +45,5 @@ router.post('/', function (req, res) {
 
   });
 });
-
 
 module.exports = router;

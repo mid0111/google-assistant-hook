@@ -19,7 +19,8 @@
   },
   "podcast": {
     "rebuild": {
-      "feedUrl": "http://feeds.rebuild.fm/rebuildfm"
+      "feedRootUrl": "http://feeds.rebuild.fm",
+      "feedPath": "/rebuildfm"
     }
   }
 }

@@ -51,7 +51,7 @@ rules:
     - allowKeywords: true
   eol-last:
     - error
-    - never
+    - always
   eqeqeq: error
   for-direction: error
   func-call-spacing: error
