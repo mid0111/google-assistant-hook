@@ -1,5 +1,4 @@
 const assert = require('assert');
-const sinon = require('sinon');
 const googleHome = require('google-home-notifier');
 
 const Request = require('../lib/request');

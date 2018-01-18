@@ -14,7 +14,7 @@
     "test:client": "ng test --watch=false --code-coverage",
     "coveralls": "cat ./coverage/client/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "format": "npm run format:server && npm run format:client",
-    "format:server": "eslint server/**/*.js --fix",
+    "format:server": "eslint server/** --fix",
     "format:client": "ng lint --fix && node ./scripts/format.js",
     "lint": "npm run lint:server && npm run lint:client",
     "lint:server": "eslint server/**",
