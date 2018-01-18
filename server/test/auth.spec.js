@@ -17,7 +17,6 @@ describe('/auth/google', () => {
 
 describe('/auth/google/callback', () => {
   const request = new Request();
-  let sandbox = null;
   const mockTokens = {
     'access_token': '1234.access_token',
     'refresh_token': 'refresh_token',
@@ -25,15 +24,9 @@ describe('/auth/google/callback', () => {
     'expiry_date': 1515472892105
   };
 
-  beforeEach(() => {
-    sandbox = sinon.sandbox.create();
-  });
-
-  afterEach(() => sandbox.restore());
-
   it('トークンが取得できた場合トップページにリダイレクトされること', (done) => {
     var oauth2Client = GoogleOAuthClient.getClient();
-    sandbox.stub(oauth2Client, 'getToken')
+    request.sandbox.stub(oauth2Client, 'getToken')
       .callsFake((code, callback) => callback(null, mockTokens));
 
     request

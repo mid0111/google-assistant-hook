@@ -6,17 +6,13 @@ const Request = require('../lib/request');
 
 describe('/api/stream', () => {
   const request = new Request();
-  let sandbox = null;
 
   const streamRootUrl = 'http://dummy.com';
   const streamPath = '/stream';
 
   beforeEach(() => {
-    sandbox = sinon.sandbox.create();
-    sandbox.stub(googleHome, 'play').callsFake((url, callback) => callback('notify'));
+    request.sandbox.stub(googleHome, 'play').callsFake((url, callback) => callback('notify'));
   });
-
-  afterEach(() => sandbox.restore());
 
   it('ストリームの再生ができること', (done) => {
     request.nock(streamRootUrl)

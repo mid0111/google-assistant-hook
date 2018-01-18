@@ -1,18 +1,10 @@
 const assert = require('assert');
-const sinon = require('sinon');
 
 const Request = require('../lib/request');
 const GoogleOAuthClient = require('../../lib/GoogleOAuthClient');
 
 describe('/api/profile', () => {
   const request = new Request();
-  let sandbox = null;
-
-  beforeEach(() => {
-    sandbox = sinon.sandbox.create();
-  });
-
-  afterEach(() => sandbox.restore());
 
   it('プロファイル情報の取得ができること', (done) => {
     request
@@ -28,7 +20,7 @@ describe('/api/profile', () => {
   });
 
   it('ログイン済みの場合プロファイル情報の取得ができること', (done) => {
-    sandbox.stub(GoogleOAuthClient, 'isAuthenticated').returns(true);
+    request.sandbox.stub(GoogleOAuthClient, 'isAuthenticated').returns(true);
 
     request
       .get('/api/profile')
