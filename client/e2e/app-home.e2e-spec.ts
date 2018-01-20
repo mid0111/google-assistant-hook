@@ -25,14 +25,14 @@ describe('google-assistant-hook app-home', () => {
     expect(page.streamMusicButton.getText()).toEqual('Stream Music');
   });
 
-  // it('ログインリンク押下でログインページにリダイレクトされること', () => {
-  //   // Angular 以外のページにアクセスするため Angular の同期を解除
-  //   browser.waitForAngularEnabled(false);
-  //   page.loginLink.click();
+  it('ログインリンク押下でログインページにリダイレクトされること', () => {
+    // Angular 以外のページにアクセスするため Angular の同期を解除
+    browser.waitForAngularEnabled(false);
+    page.loginLink.click();
 
-  //   browser.sleep(500);
-  //   expect(browser.getCurrentUrl()).toMatch(/https:\/\/accounts.google.com\/.*/);
-  // });
+    browser.sleep(500);
+    expect(browser.getCurrentUrl()).toMatch(/https:\/\/dummy.com\/oauth/);
+  });
 
   it('Stream Music ボタン押下で stream ページに遷移すること', () => {
     page.streamMusicButton.click();
