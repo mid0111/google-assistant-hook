@@ -19,9 +19,7 @@
     "lint": "npm run lint:server && npm run lint:client",
     "lint:server": "eslint server/**",
     "lint:client": "ng lint",
-    "e2e": "npm run e2e:serve && npm run e2e:test; EXIT_CODE=$? || kill $(ps -ef | grep nodemo[n] | awk '{print $2}') && exit $EXIT_CODE",
-    "e2e:serve": "npm run serve:server &",
-    "e2e:test": "ng e2e --proxy-config client/proxy.conf.json"
+    "e2e": "bash -x ./scripts/e2e.sh"
   },
   "nodemonConfig": {
     "ignore": [
