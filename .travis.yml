@@ -20,6 +20,7 @@ before_install:
 script:
   - npm run lint
   - npm test
+  - npm run e2e
 
 after_success:
   - npm run coveralls
