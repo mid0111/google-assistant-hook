@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "npm run build:client && /bin/bash scripts/build.sh",
-    "build:client": "ng build --prod",
+    "build:client": "ng build --prod --no-progress",
     "serve": "concurrently \"npm run serve:server\" \"npm run serve:client\"",
     "serve:server": "nodemon ./server/bin/www",
     "serve:client": "ng serve --proxy-config client/proxy.conf.json",
