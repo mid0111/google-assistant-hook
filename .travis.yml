@@ -1,11 +1,9 @@
 language: node_js
 node_js:
-  - "8"
-
+  - '8'
 cache:
   directories:
-    - "node_modules"
-
+    - node_modules
 addons:
   chrome: stable
 
@@ -24,3 +22,12 @@ script:
 
 after_success:
   - npm run coveralls
+  - npm run build
+
+deploy:
+  provider: releases
+  api_key:
+    secure: 5qrS1sM36Qo04DpHuW+VF5ZuglGTZIepiCe7wuzeaWLCMzaqWXvjsi/HN0tGYPVT4z3Ri0r6FmnFI+lukR9u3HrfRDPW7RIdXqH6zZ1X5ImktFmoo921dD9sV2WaBlHtulu5aBWckIVzyU1TNjOejtMvRAnHEuZ+IyhbDlDYGL3RRQaMDU+PBmZAoaa1qX/tmNIZWj65Bna7Qx2f67xK49jzhS0amNx4RJPM3RFjmbWGzDzn14eRunzwdo5nBl+hKE4KJxHMuDrbfp/GP+jEkdnzw3QyHiSx3c1mTDVG3wBELQ6Eu5x8xum9FeNGywiJBKKgEMeGKm4VpwfG/jBOKfkncPhu9r86NIGKvbbs6WZhXYIPnyI8nwclVT7/E2oMPsrn713P9uJ2Iesype0YA3XX5IlxB2UTOZwFXsxmR+nttE0OiInMVvR7D190esJiWi0h51CRhkia0vo6twmmXRhUQuoSEbistDA90jsagTjJ4GCUF3HDbzpdue6tanB9IqBzLrApzVdanWw4m3C47YP870ZIhPjWcErR0I79UH3mRB+NZKe5E9swArtRF5yeJZA931GS/KEehMzh6PnAxFB2J45bOioeyyx5z0NqDizwD020KtmkknTmEUcZYNgqZeii70LuInDca7PKWZNCszBl9uYvqt2SSEdkUi/8Vz4=
+  file: dist/build.tar.gz
+  on:
+    repo: mid0111/google-assistant-hook
