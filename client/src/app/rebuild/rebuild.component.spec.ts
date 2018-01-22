@@ -1,18 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
+import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { SharedModule } from '../shared/shared.module';
 import { RebuildComponent } from './rebuild.component';
 import { PodcastComponent } from './podcast/podcast.component';
 import { MessageService } from '../model/message.service';
+import { MessageType } from '../model/message';
 import { RebuildService } from '../model/rebuild.service';
 
 let component: RebuildComponent;
 let fixture: ComponentFixture<RebuildComponent>;
 let page: Page;
 let rebuildService: RebuildService;
+let messageService: MessageService;
 
 const mockRebuild = {
   podcasts: [{
@@ -52,13 +55,47 @@ describe('RebuildComponent', () => {
     createComponent();
   }));
 
-  it('RebuildComponent が作成できること', () => {
-    expect(component).toBeTruthy();
-    expect(page.title.textContent).toBe('Rebuild FM ポッドキャスト');
-    expect(page.description.textContent).toBe('Rebuild FM のエピソードを Google Home で再生する');
+  it('RebuildComponent が作成できること', async(() => {
+    spyOn(rebuildService, 'get')
+      .and.returnValue(of(mockRebuild));
 
-    expect(page.podcasts.length).toBe(mockRebuild.podcasts.length);
-  });
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      page.addPageElements();
+
+      expect(component).toBeTruthy();
+      expect(page.title.textContent).toBe('Rebuild FM ポッドキャスト');
+      expect(page.description.textContent).toBe('Rebuild FM のエピソードを Google Home で再生する');
+
+      expect(page.podcasts.length).toBe(mockRebuild.podcasts.length);
+    });
+  }));
+
+  it('ポッドキャスト一覧取得でエラーが発生した場合メッセージが通知されること', async(() => {
+    const testError = new Error('Test error');
+    spyOn(messageService, 'set');
+    spyOn(rebuildService, 'get')
+      .and.returnValue(new Observable(
+        (subscriber) => subscriber.error(testError)));
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      page.addPageElements();
+
+      expect(component).toBeTruthy();
+      expect(page.title.textContent).toBe('Rebuild FM ポッドキャスト');
+      expect(page.description.textContent).toBe('Rebuild FM のエピソードを Google Home で再生する');
+
+      expect(page.podcasts.length).toBe(0);
+
+      expect(messageService.set).toHaveBeenCalledWith({
+        message: 'ポッドキャスト一覧の取得に失敗しました。',
+        type: MessageType.ERROR,
+        error: testError,
+      });
+    });
+  }));
+
 });
 
 class Page {
@@ -78,14 +115,7 @@ function createComponent() {
   fixture = TestBed.createComponent(RebuildComponent);
   component = fixture.componentInstance;
   rebuildService = fixture.debugElement.injector.get(RebuildService);
+  messageService = fixture.debugElement.injector.get(MessageService);
 
   page = new Page();
-
-  spyOn(rebuildService, 'get')
-    .and.returnValue(of(mockRebuild));
-
-  fixture.detectChanges();
-  return fixture.whenStable().then(() => {
-    page.addPageElements();
-  });
 }
