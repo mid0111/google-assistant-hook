@@ -1,8 +1,18 @@
-<div class="card" style="width: 18rem;">
-  <i class="material-icons md-120">queue_music</i>
-  <div class="card-body" *ngFor="let extension of extensions">
-    <h5 class="card-title">{{extension.title}}</h5>
-    <p class="card-text">{{extension.description}}</p>
-    <a href="{{extension.path}}" class="btn btn-primary">{{extension.btnName}}</a>
+<div class="row">
+  <div class="col-lg-4 col-md-6 pb-3" *ngFor="let extension of extensions">
+
+    <div class="card">
+
+      <div class="icon">
+        <i *ngIf="extension.materialIcon" class="material-icons md-120">{{extension.materialIcon}}</i>
+        <div *ngIf="extension.backgroundImage" class="image-icons" [style.backgroundImage]="'url('+ extension.backgroundImage +')'"></div>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">{{extension.title}}</h5>
+        <p class="card-text">{{extension.description}}</p>
+        <a href="{{extension.path}}" class="btn btn-primary">{{extension.btnName}}</a>
+      </div>
+    </div>
   </div>
 </div>

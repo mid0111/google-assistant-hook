@@ -20,6 +20,10 @@ describe('google-assistant-hook app-home', () => {
     expect(page.loginMessage.isPresent()).toBeTruthy();
     expect(page.loginMessage.getText()).toEqual('Google Fit を利用する場合は、あらかじめ Google にログイン してください');
 
+    expect(page.rebuildFmTitle.getText()).toEqual('Rebuild FM ポッドキャスト');
+    expect(page.rebuildFmDescription.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生する');
+    expect(page.rebuildFmButton.getText()).toEqual('Rebuild FM');
+
     expect(page.streamMusicTitle.getText()).toEqual('Stream Music');
     expect(page.streamMusicDescription.getText()).toEqual('Web 上の音楽を Google Home でストリーム再生する');
     expect(page.streamMusicButton.getText()).toEqual('Stream Music');
@@ -32,6 +36,11 @@ describe('google-assistant-hook app-home', () => {
 
     browser.sleep(500);
     expect(browser.getCurrentUrl()).toMatch(/https:\/\/dummy.com\/oauth/);
+  });
+
+  it('Rebuild FM ボタン押下で stream ページに遷移すること', () => {
+    page.rebuildFmButton.click();
+    expect(browser.getCurrentUrl()).toMatch(/http:\/\/[^\/]+\/rebuild$/);
   });
 
   it('Stream Music ボタン押下で stream ページに遷移すること', () => {

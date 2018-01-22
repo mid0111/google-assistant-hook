@@ -1,0 +1,8 @@
+<div class="card">
+  <h6 class="card-header text-muted font-italic">{{podcast.date}} {{podcast.year}}</h6>
+  <div class="card-body">
+    <h5 class="card-title">{{podcast.title}}</h5>
+    <p class="card-text">{{podcast.subTitle}}</p>
+    <div class="btn btn-primary" (click)="play(podcast.url)">再生</div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { MessageComponent } from './message/message.component';
 import { StreamModule } from './stream/stream.module';
+import { RebuildModule } from './rebuild/rebuild.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,6 +26,7 @@ describe('AppComponent', () => {
         AppRoutingModule,
         HomeModule,
         StreamModule,
+        RebuildModule,
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
