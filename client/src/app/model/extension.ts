@@ -3,4 +3,6 @@ export interface Extension {
   description: String;
   path: String;
   btnName: String;
+  backgroundImage?: String;
+  materialIcon?: String;
 }

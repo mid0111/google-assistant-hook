@@ -16,7 +16,7 @@ import { MessageType } from '../model/message';
 export class RebuildComponent implements OnInit {
   podcasts: Podcast[];
   title: String = 'Rebuild FM ポッドキャスト';
-  description: String = 'Rebuild FM のエピソードを Google Home で再生します。';
+  description: String = 'Rebuild FM のエピソードを Google Home で再生する';
 
   constructor(
     private rebuildService: RebuildService,

@@ -55,7 +55,7 @@ describe('RebuildComponent', () => {
   it('RebuildComponent が作成できること', () => {
     expect(component).toBeTruthy();
     expect(page.title.textContent).toBe('Rebuild FM ポッドキャスト');
-    expect(page.description.textContent).toBe('Rebuild FM のエピソードを Google Home で再生します。');
+    expect(page.description.textContent).toBe('Rebuild FM のエピソードを Google Home で再生する');
 
     expect(page.podcasts.length).toBe(mockRebuild.podcasts.length);
   });
