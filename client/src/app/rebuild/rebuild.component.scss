@@ -1,1 +1,11 @@
+@import '../shared/custom.scss';
 
+.menu {
+  background: black url(https://rebuild.fm/images/bg.jpg) center center no-repeat;
+  background-size: cover;
+  color: $white
+}
+
+app-podcast {
+  padding: 10px 0;
+}
