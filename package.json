@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run build:client",
+    "build": "npm run build:client && /bin/bash scripts/build.sh",
     "build:client": "ng build --prod",
     "serve": "concurrently \"npm run serve:server\" \"npm run serve:client\"",
     "serve:server": "nodemon ./server/bin/www",

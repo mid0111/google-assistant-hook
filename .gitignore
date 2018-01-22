@@ -65,3 +65,4 @@ server/config/braviaSecret.json
 
 # build module
 server/public/
+dist
