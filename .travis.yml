@@ -22,6 +22,9 @@ script:
   - npm run e2e
 
 after_success:
+  - rm ./server/config/googleClientSecret.json
+  - rm ./server/config/braviaSecret.json
+  - rm ./server/config/serviceAccountKey.json
   - npm run coveralls
   - if [ "$TRAVIS_BRANCH" == "master" -a $TRAVIS_PULL_REQUEST == false ]; then npm run build; fi
 
