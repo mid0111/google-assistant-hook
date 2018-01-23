@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - '8'
 cache:
+  yarn: true
   directories:
     - node_modules
 addons:
@@ -22,7 +23,7 @@ script:
 
 after_success:
   - npm run coveralls
-  - npm run build
+  - if [ "$TRAVIS_BRANCH" == "master" -a $TRAVIS_PULL_REQUEST == false ]; then npm run build; fi
 
 deploy:
   provider: releases
