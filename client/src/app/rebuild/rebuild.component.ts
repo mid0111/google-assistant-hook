@@ -17,6 +17,7 @@ export class RebuildComponent implements OnInit {
   podcasts: Podcast[];
   title: String = 'Rebuild FM ポッドキャスト';
   description: String = 'Rebuild FM のエピソードを Google Home で再生する';
+  loading = true;
 
   constructor(
     private rebuildService: RebuildService,
@@ -30,8 +31,12 @@ export class RebuildComponent implements OnInit {
   getPodcasts() {
     this.rebuildService.get()
       .subscribe(
-      (rebuild) => this.podcasts = rebuild.podcasts,
+      (rebuild) => {
+        this.podcasts = rebuild.podcasts;
+        this.loading = false;
+      },
       (error) => {
+        this.loading = false;
         this.messageService.set({
           message: 'ポッドキャスト一覧の取得に失敗しました。',
           type: MessageType.ERROR,
