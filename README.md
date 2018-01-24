@@ -37,7 +37,7 @@ Google Home を機能拡張するためのサーバです。
 1. 解凍＆依存モジュールダウンロード
     ```bash
     mkdir google-assistant-hook; cd $_
-    tar tfz build.tar.gz
+    tar xfz build.tar.gz
     yarn --prod
     ```
 1. 設定ファイルの配備（設定の値は [ブログ](http://mid0111.hatenablog.com/entry/2017/12/23/131954) 参照）
