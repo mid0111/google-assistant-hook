@@ -1,4 +1,5 @@
 <form (ngSubmit)="onSubmit()" #streamForm="ngForm">
+  <app-spinner *ngIf="loading" [coverPage]="true"></app-spinner>
   <div class="form-group mb-3">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
