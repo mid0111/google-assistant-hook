@@ -1,12 +1,54 @@
 @import "../custom.scss";
 
 :host {
+  position: relative;
+  display: block;
   width: 100%;
+  z-index: 1020;
+}
+
+.blur {
+  display: none;
+  position: fixed;
+  top: $nav-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: black;
+  opacity: .3;
+  z-index: 1000;
+}
+
+.blur.show {
+  display: block;
+}
+
+.spinner-container {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  z-index: 1020;
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+  background-color: $white;
+}
+
+.spinner-container.spinner-inner {
+  position: absolute;
+  top: 0;
+  border-radius: .25rem;
+}
+
+.spinner-container.spinner-page {
+  position: fixed;
+  top: $nav-height;
+  border-radius: 0 0 .25rem .25rem;
 }
 
 .spinner {
-  margin: 0 auto;
-
   border: 5px solid $gray-100;
   border-top: 5px solid $gray-500;
   border-radius: 50%;

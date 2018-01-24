@@ -1,1 +1,4 @@
-<div class="spinner"></div>
+<div class="blur" [ngClass]="{'show': coverPage}"></div>
+<div class="spinner-container" [ngClass]="{'spinner-page': coverPage, 'spinner-inner': !coverPage}">
+  <div class="spinner"></div>
+</div>
