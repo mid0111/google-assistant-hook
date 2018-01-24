@@ -28,6 +28,11 @@ after_success:
   - npm run coveralls
   - if [ "$TRAVIS_BRANCH" == "master" -a $TRAVIS_PULL_REQUEST == false ]; then npm run build; fi
 
+before_deploy:
+  - git config --local user.name "mid0111"
+  - git config --local user.email "m.tajima0111@gmail.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
 deploy:
   provider: releases
   api_key:
