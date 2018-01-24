@@ -7,9 +7,9 @@ Google Home を機能拡張するためのサーバです。
 
 ## できること
 
-### 音声での操作
-
 ![](https://cdn-ak.f.st-hatena.com/images/fotolife/t/tajima0111185/20180124/20180124171143.png?1516781516)
+
+### 音声での操作
 
 * テレビ（Bravia）の ON/OFF
 * Rebuild FM の最新話の再生
