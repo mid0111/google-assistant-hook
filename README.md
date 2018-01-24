@@ -5,9 +5,9 @@
 
 Google Home を機能拡張するためのサーバです。
 
-## できること
-
 ![](https://cdn-ak.f.st-hatena.com/images/fotolife/t/tajima0111185/20180124/20180124171143.png?1516781516)
+
+## できること
 
 ### 音声での操作
 
