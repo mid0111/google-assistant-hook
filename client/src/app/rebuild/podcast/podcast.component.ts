@@ -15,6 +15,7 @@ import { MessageService } from '../../model/message.service';
 })
 export class PodcastComponent implements OnInit {
   @Input() podcast: Podcast;
+  loading = false;
 
   constructor(
     private streamService: StreamService,
@@ -25,17 +26,20 @@ export class PodcastComponent implements OnInit {
   }
 
   play(url) {
+    this.loading = true;
     this.streamService.play({
       url: url,
     })
       .subscribe(
       () => {
+        this.loading = false;
         this.messageService.set({
           message: 'ストリームの再生を開始しました。',
           type: MessageType.SUCCESS,
         });
       },
       (error) => {
+        this.loading = false;
         this.messageService.set({
           message: 'ストリームの再生に失敗しました。',
           type: MessageType.ERROR,
