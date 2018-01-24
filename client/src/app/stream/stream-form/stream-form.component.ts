@@ -14,24 +14,28 @@ import { MessageType } from '../../model/message';
 })
 export class StreamFormComponent implements OnInit {
   streamUrl: String;
+  loading = false;
 
   constructor(private streamService: StreamService, private messageService: MessageService) { }
 
   ngOnInit() { }
 
   onSubmit() {
+    this.loading = true;
     this.streamService.play({
       url: this.streamUrl,
     })
       .subscribe(
       () => {
         this.streamUrl = undefined;
+        this.loading = false;
         this.messageService.set({
           message: 'ストリームの再生を開始しました。',
           type: MessageType.SUCCESS,
         });
       },
       (error) => {
+        this.loading = false;
         this.messageService.set({
           message: 'ストリームの再生に失敗しました。',
           type: MessageType.ERROR,
