@@ -28,25 +28,25 @@ Google Home を機能拡張するためのサーバです。
 ## インストール
 
 1. node (>=8.0.0) インストール
-* yarn, pm2 インストール
+1. yarn, pm2 インストール
     ```bash
     npm install -g yarn
     npm install -g pm2
     ```
-* [モジュール](https://github.com/mid0111/google-assistant-hook/releases) をダウンロード
-* 解凍＆依存モジュールダウンロード
+1. [モジュール](https://github.com/mid0111/google-assistant-hook/releases) をダウンロード
+1. 解凍＆依存モジュールダウンロード
     ```bash
     mkdir google-assistant-hook; cd $_
     tar tfz build.tar.gz
     yarn --prod
     ```
-* 設定ファイルの配備（設定の値は [ブログ](http://mid0111.hatenablog.com/entry/2017/12/23/131954) 参照）
+1. 設定ファイルの配備（設定の値は [ブログ](http://mid0111.hatenablog.com/entry/2017/12/23/131954) 参照）
     ```bash
     cp server/config/braviaSecret.json.sample server/config/braviaSecret.json && vi $_
     cp server/config/googleClientSecret.json.sample server/config/googleClientSecret.json && vi $_
     cp server/config/serviceAccountKey.json.sample server/config/serviceAccountKey.json && vi $_
     ```
-* 起動
+1. 起動
     ```bash
     pm2 start npm -- start
     ```
