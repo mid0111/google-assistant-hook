@@ -1,18 +1,18 @@
 {
   "name": "google-assistant-hook",
   "scripts": {
-    "postdeploy": "npm run build"
+    "postdeploy": "bash -xe ./scripts/postdeploy.sh"
   },
   "env": {
+    "NPM_CONFIG_PRODUCTION": "false"
   },
-  "formation": {
-  },
+  "formation": {},
   "addons": [
 
   ],
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ]
+  "buildpacks": [{
+    "url": "https://github.com/heroku/heroku-buildpack-apt"
+  }, {
+    "url": "heroku/nodejs"
+  }]
 }
