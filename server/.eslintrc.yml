@@ -63,7 +63,6 @@ rules:
   function-paren-newline: error
   generator-star-spacing: error
   getter-return: error
-  global-require: error
   guard-for-in: error
   handle-callback-err: error
   id-blacklist: error
@@ -170,7 +169,6 @@ rules:
   no-shadow: error
   no-shadow-restricted-names: error
   no-spaced-func: error
-  no-sync: error
   no-tabs: error
   no-template-curly-in-string: error
   no-ternary: error

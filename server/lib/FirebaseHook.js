@@ -1,4 +1,6 @@
 var admin = require('firebase-admin');
+var fs = require('fs');
+var path = require('path');
 
 var GoogleFit = require('./GoogleFit');
 var TV = require('./TV');
@@ -7,7 +9,12 @@ var Logger = require('./Logger');
 var logger = new Logger();
 
 var config = require('../config/app.json');
-var serviceAccount = require('../config/serviceAccountKey.json');
+
+var serviceAccountFilePath = path.join(__dirname, '../config/serviceAccountKey.json');
+var serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
+if (fs.existsSync(serviceAccountFilePath)) {
+  serviceAccount = require(serviceAccountFilePath);
+}
 
 class FirebaseHook {
 
@@ -35,10 +42,10 @@ class FirebaseHook {
     });
   }
 
-  static watchAndAction(path, actionFn) {
+  static watchAndAction(dbPath, actionFn) {
     var db = admin.database();
-    var ref = db.ref(path);
-    ref.on('child_added', function (snapshot, prevChildKey) {
+    var ref = db.ref(dbPath);
+    ref.on('child_added', function(snapshot, prevChildKey) {
       logger.info(`Receive data. ${prevChildKey} ${JSON.stringify(snapshot.val())}`);
 
       if (!prevChildKey) {
@@ -51,7 +58,7 @@ class FirebaseHook {
       var logRef = ref.child(prevChildKey);
       logRef.set(null);
 
-    }, function (err) {
+    }, function(err) {
       logger.info('Failed to read data', err);
     });
   }

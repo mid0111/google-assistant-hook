@@ -1,7 +1,7 @@
 {
   "name": "google-assistant-hook",
   "scripts": {
-    "postdeploy": "npm run build && apt-get install libavahi-compat-libdnssd-dev"
+    "postdeploy": "bash ./scripts/postdeploy.sh"
   },
   "env": {
     "NPM_CONFIG_PRODUCTION": "false"
