@@ -9,25 +9,21 @@ var Logger = require('./Logger');
 var logger = new Logger();
 
 var config = require('../config/app.json');
-
 var serviceAccountFilePath = path.join(__dirname, '../config/serviceAccountKey.json');
-var serviceAccount = {};
-if (fs.existsSync(serviceAccountFilePath)) {
-  // 設定ファイルがあればファイルから読み込み
-  serviceAccount = require(serviceAccountFilePath);
-}
-if (process.env.SERVICE_ACCOUNT_KEY) {
-  // 環境変数に設定があれば環境変数の値を優先
-  serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
-}
 
 class FirebaseHook {
 
   static watch() {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
+    var adminConfig = {
+      credential: admin.credential.applicationDefault(),
       databaseURL: `https://${config.database.name}.firebaseio.com`
-    });
+    };
+
+    if (fs.existsSync(serviceAccountFilePath)) {
+      // 設定ファイルがあればファイルから読み込み
+      adminConfig.credential = admin.credential.cert(require(serviceAccountFilePath));
+    }
+    admin.initializeApp(adminConfig);
 
     var googleFit = new GoogleFit();
 
