@@ -3,16 +3,14 @@
   "scripts": {
     "postdeploy": "npm run build"
   },
-  "env": {
-  },
-  "formation": {
-  },
+  "env": {},
+  "formation": {},
   "addons": [
 
   ],
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ]
+  "buildpacks": [{
+    "url": "https://github.com/heroku/heroku-buildpack-apt"
+  }, {
+    "url": "heroku/nodejs"
+  }]
 }
