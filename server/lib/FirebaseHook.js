@@ -12,9 +12,12 @@ var config = require('../config/app.json');
 
 var serviceAccountFilePath = path.join(__dirname, '../config/serviceAccountKey.json');
 var serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
+console.log('debug: serviceAccountFilePath', serviceAccountFilePath);
 if (fs.existsSync(serviceAccountFilePath)) {
+  console.log('debug: ファイルから');
   serviceAccount = require(serviceAccountFilePath);
 }
+console.log('debug: serviceAccount', serviceAccount);
 
 class FirebaseHook {
 

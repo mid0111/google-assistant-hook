@@ -10,7 +10,7 @@
     "serve:client": "ng serve --proxy-config client/proxy.conf.json",
     "start": "NODE_ENV=production node ./server/bin/www",
     "test": "rm -rf ./coverage && npm run test:server && npm run test:client",
-    "test:server": "nyc --reporter=lcov --report-dir=coverage/server --exclude=server/test/** mocha server/test/ --recursive --exit",
+    "test:server": "mocha server/test/ --recursive --exit",
     "test:client": "ng test --watch=false --code-coverage",
     "coveralls": "cat ./coverage/client/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "format": "npm run format:server && npm run format:client",
