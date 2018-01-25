@@ -1,7 +1,7 @@
 {
   "name": "google-assistant-hook",
   "scripts": {
-    "postdeploy": "bash ./scripts/postdeploy.sh"
+    "postdeploy": "bash -xe ./scripts/postdeploy.sh"
   },
   "env": {
     "NPM_CONFIG_PRODUCTION": "false"
