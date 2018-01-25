@@ -11,9 +11,14 @@ var logger = new Logger();
 var config = require('../config/app.json');
 
 var serviceAccountFilePath = path.join(__dirname, '../config/serviceAccountKey.json');
-var serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
+var serviceAccount = {};
 if (fs.existsSync(serviceAccountFilePath)) {
+  // 設定ファイルがあればファイルから読み込み
   serviceAccount = require(serviceAccountFilePath);
+}
+if (process.env.SERVICE_ACCOUNT_KEY) {
+  // 環境変数に設定があれば環境変数の値を優先
+  serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
 }
 
 class FirebaseHook {
