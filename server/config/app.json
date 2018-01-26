@@ -4,7 +4,8 @@
     "path": {
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",
-      "podcastLog": "podcast/log"
+      "podcastLog": "podcast/log",
+      "airconLog": "aircon/log"
     }
   },
   "googleHome": {
@@ -29,6 +30,14 @@
       "command": {
         "turnOn": "on",
         "turnOff": "off"
+      }
+    },
+    "aircon": {
+      "name": "aircon",
+      "command": {
+        "heat": "heat",
+        "cold": "cold",
+        "stop": "stop"
       }
     }
   }
