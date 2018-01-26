@@ -12,10 +12,13 @@ describe('google-assistant-hook app-home', () => {
   it('初期表示', () => {
     expect(page.title.getText()).toEqual('Google Home に話しかけてみましょう');
 
-    expect(page.menus.count()).toEqual(3);
+    expect(page.menus.count()).toEqual(6);
     expect(page.menus.get(0).getText()).toEqual('OK Google!! テレビをつけて!');
     expect(page.menus.get(1).getText()).toEqual('OK Google!! テレビを消して!');
     expect(page.menus.get(2).getText()).toEqual('OK Google!! Rebuild fm を流して!');
+    expect(page.menus.get(3).getText()).toEqual('OK Google!! 暖房をつけて!');
+    expect(page.menus.get(4).getText()).toEqual('OK Google!! 冷房をつけて!');
+    expect(page.menus.get(5).getText()).toEqual('OK Google!! エアコンを消して!');
 
     expect(page.loginMessage.isPresent()).toBeTruthy();
     expect(page.loginMessage.getText()).toEqual('Google Fit を利用する場合は、あらかじめ Google にログイン してください');
