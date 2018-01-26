@@ -22,5 +22,14 @@
       "feedRootUrl": "http://feeds.rebuild.fm",
       "feedPath": "/rebuildfm"
     }
+  },
+  "ir": {
+    "audio": {
+      "name": "audio",
+      "command": {
+        "turnOn": "on",
+        "turnOff": "off"
+      }
+    }
   }
 }
