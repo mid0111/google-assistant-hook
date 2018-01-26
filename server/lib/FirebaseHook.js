@@ -4,6 +4,7 @@ var GoogleFit = require('./GoogleFit');
 var TV = require('./TV');
 var Podcast = require('./Podcast');
 var Logger = require('./Logger');
+var Aircon = require('./Aircon');
 var logger = new Logger();
 
 var config = require('../config/app.json');
@@ -33,12 +34,17 @@ class FirebaseHook {
     this.watchAndAction(config.database.path.podcastLog, (value) => {
       Podcast.play(value);
     });
+
+    // エアコン のログデータ
+    this.watchAndAction(config.database.path.airconLog, (value) => {
+      Aircon.doAction(value);
+    });
   }
 
   static watchAndAction(path, actionFn) {
     var db = admin.database();
     var ref = db.ref(path);
-    ref.on('child_added', function (snapshot, prevChildKey) {
+    ref.on('child_added', function(snapshot, prevChildKey) {
       logger.info(`Receive data. ${prevChildKey} ${JSON.stringify(snapshot.val())}`);
 
       if (!prevChildKey) {
@@ -51,7 +57,7 @@ class FirebaseHook {
       var logRef = ref.child(prevChildKey);
       logRef.set(null);
 
-    }, function (err) {
+    }, function(err) {
       logger.info('Failed to read data', err);
     });
   }
