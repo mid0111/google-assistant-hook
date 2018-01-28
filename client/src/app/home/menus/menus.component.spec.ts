@@ -34,7 +34,7 @@ describe('MenusComponent', () => {
     it('ログインメッセージが表示されること', () => {
       expect(page.title.textContent).toBe('Google Home に話しかけてみましょう');
 
-      expect(page.menus.length).toBe(6);
+      expect(page.menus.length).toBe(8);
       let i = 0;
       expect(page.menus[i++].textContent).toBe('OK Google!! テレビをつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! テレビを消して!');
@@ -42,6 +42,8 @@ describe('MenusComponent', () => {
       expect(page.menus[i++].textContent).toBe('OK Google!! 暖房をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! 冷房をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! エアコンを消して!');
+      expect(page.menus[i++].textContent).toBe('OK Google!! 電気をつけて!');
+      expect(page.menus[i++].textContent).toBe('OK Google!! 電気を消して!');
 
       expect(page.loginMessage.nativeElement.textContent).toBe('Google Fit を利用する場合は、あらかじめ\n    Google にログイン してください');
     });
@@ -58,7 +60,7 @@ describe('MenusComponent', () => {
     it('健康体操の説明が表示されること', () => {
       expect(page.title.textContent).toBe('Google Home に話しかけてみましょう');
 
-      expect(page.menus.length).toBe(8);
+      expect(page.menus.length).toBe(10);
       let i = 0;
       expect(page.menus[i++].textContent).toBe('OK Google!! テレビをつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! テレビを消して!');
@@ -66,6 +68,8 @@ describe('MenusComponent', () => {
       expect(page.menus[i++].textContent).toBe('OK Google!! 暖房をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! 冷房をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! エアコンを消して!');
+      expect(page.menus[i++].textContent).toBe('OK Google!! 電気をつけて!');
+      expect(page.menus[i++].textContent).toBe('OK Google!! 電気を消して!');
       expect(page.menus[i++].textContent).toBe('ねぇ Google、健康体操を開始して');
       expect(page.menus[i++].textContent).toBe('ねぇ Google、健康体操を終了して');
 

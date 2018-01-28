@@ -13,6 +13,7 @@ Google Home を機能拡張するためのサーバです。
 
 * テレビ（Bravia）の ON/OFF
 * エアコンの ON/OFF
+* 照明の ON/OFF
 * Rebuild FM の最新話の再生
 * Google Fit へのアクティビティの追加
 

@@ -5,7 +5,8 @@
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",
       "podcastLog": "podcast/log",
-      "airconLog": "aircon/log"
+      "airconLog": "aircon/log",
+      "lightLog": "light/log"
     }
   },
   "googleHome": {
@@ -38,6 +39,13 @@
         "heat": "heat",
         "cold": "cold",
         "stop": "stop"
+      }
+    },
+    "light": {
+      "name": "light",
+      "command": {
+        "on": "on",
+        "off": "off"
       }
     }
   }
