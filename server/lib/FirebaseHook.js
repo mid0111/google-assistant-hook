@@ -5,6 +5,7 @@ var TV = require('./TV');
 var Podcast = require('./Podcast');
 var Logger = require('./Logger');
 var Aircon = require('./Aircon');
+var Light = require('./Light');
 var logger = new Logger();
 
 var config = require('../config/app.json');
@@ -38,6 +39,11 @@ class FirebaseHook {
     // エアコン のログデータ
     this.watchAndAction(config.database.path.airconLog, (value) => {
       Aircon.doAction(value);
+    });
+
+    // ライト のログデータ
+    this.watchAndAction(config.database.path.lightLog, (value) => {
+      Light.doAction(value);
     });
   }
 
