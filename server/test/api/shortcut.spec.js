@@ -6,10 +6,6 @@ const Request = require('../lib/request');
 describe('/api/shortcut', () => {
   const request = new Request();
 
-  beforeEach(() => {
-    request.sandbox.stub(FirebaseClient, 'initializeApp').returns({});
-  });
-
   it('ショートカット一覧取得ができること', (done) => {
     const mockData = {
       on: [
