@@ -24,6 +24,11 @@ class Request {
     return this;
   }
 
+  put(...args) {
+    this.result = this.request.put(args);
+    return this;
+  }
+
   send(data) {
     this.result = this.result.send(data);
     return this;
@@ -41,9 +46,9 @@ class Request {
   }
 
   end(callback) {
-    this.result.end(() => {
+    return this.result.end((err) => {
       this.sandbox.restore();
-      callback();
+      return callback(err);
     });
   }
 }
