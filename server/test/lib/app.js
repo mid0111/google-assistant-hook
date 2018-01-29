@@ -1,9 +1,10 @@
 const sinon = require('sinon');
 
-const FirebaseHook = require('../../lib/FirebaseHook');
+const FirebaseClient = require('../../lib/FirebaseClient');
 
-// テスト用に FirebaseHook を mock したアプリケーションを作成
-sinon.stub(FirebaseHook, 'watch').returns();
+// テスト用に FirebaseClient を mock したアプリケーションを作成
+sinon.stub(FirebaseClient, 'initializeApp').returns();
+sinon.stub(FirebaseClient, 'watchAndAction').returns();
 const app = require('../../app');
 
 module.exports = app;

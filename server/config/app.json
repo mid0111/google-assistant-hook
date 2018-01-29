@@ -2,11 +2,14 @@
   "database": {
     "name": "refined-byte-188701",
     "path": {
+      "appShortcut": "app/shortcut",
+      "shortcutLog": "shortcut/log",
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",
       "podcastLog": "podcast/log",
       "airconLog": "aircon/log",
-      "lightLog": "light/log"
+      "lightLog": "light/log",
+      "audioLog": "audio/log"
     }
   },
   "googleHome": {
@@ -29,8 +32,8 @@
     "audio": {
       "name": "audio",
       "command": {
-        "turnOn": "on",
-        "turnOff": "off"
+        "on": "on",
+        "off": "off"
       }
     },
     "aircon": {

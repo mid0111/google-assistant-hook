@@ -1,35 +1,19 @@
-const exec = require('child_process').exec;
-
-const Logger = require('./Logger');
+const IRClient = require('./IRClient');
 const config = require('../config/app.json');
-
-const logger = new Logger();
 
 class Aircon {
   static doAction(data) {
     switch (data.text) {
       case 'heat':
-        exec(`irsend SEND_ONCE ${config.ir.aircon.name} ${config.ir.aircon.command.heat}`, (error) => {
-          if (error) {
-            logger.error('Failed to turn on aircon (heat).', error);
-          }
-        });
+        this.heatOn();
         break;
 
       case 'cold':
-        exec(`irsend SEND_ONCE ${config.ir.aircon.name} ${config.ir.aircon.command.cold}`, (error) => {
-          if (error) {
-            logger.error('Failed to turn on aircon (cold).', error);
-          }
-        });
+        this.coldOn();
         break;
 
       case 'stop':
-        exec(`irsend SEND_ONCE ${config.ir.aircon.name} ${config.ir.aircon.command.stop}`, (error) => {
-          if (error) {
-            logger.error('Failed to turn off aircon.', error);
-          }
-        });
+        this.off();
         break;
 
       default:
@@ -37,6 +21,19 @@ class Aircon {
         break;
     }
   }
+
+  static heatOn() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.heat);
+  }
+
+  static coldOn() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.cold);
+  }
+
+  static off() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.stop);
+  }
+
 }
 
 module.exports = Aircon;

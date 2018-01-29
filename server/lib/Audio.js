@@ -1,7 +1,7 @@
 const IRClient = require('./IRClient');
 const config = require('../config/app.json');
 
-class Light {
+class Audio {
   static doAction(data) {
     switch (data.text) {
       case 'on':
@@ -19,12 +19,12 @@ class Light {
   }
 
   static on() {
-    IRClient.send(config.ir.light.name, config.ir.light.command.on);
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.on);
   }
 
   static off() {
-    IRClient.send(config.ir.light.name, config.ir.light.command.off);
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.off);
   }
 }
 
-module.exports = Light;
+module.exports = Audio;

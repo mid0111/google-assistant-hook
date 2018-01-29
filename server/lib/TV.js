@@ -1,38 +1,36 @@
 const Bravia = require('bravia');
-const exec = require('child_process').exec;
 
-const Logger = require('./Logger');
+const IRClient = require('./IRClient');
 const config = require('../config/app.json');
 const secretConfig = require('../config/braviaSecret.json');
 
 const bravia = new Bravia(config.tv.ip, '80', secretConfig.psk);
-const logger = new Logger();
 
 class TV {
   static doAction(data) {
     switch (data.text) {
       case 'on':
-        exec(`irsend SEND_ONCE ${config.ir.audio.name} ${config.ir.audio.command.turnOn}`, (error) => {
-          if (error) {
-            logger.error('Failed to turn on audio.', error);
-          }
-        });
-        bravia.send('WakeUp');
-
+        this.on();
         break;
+
       case 'off':
-        exec(`irsend SEND_ONCE ${config.ir.audio.name} ${config.ir.audio.command.turnOff}`, (error) => {
-          if (error) {
-            logger.error('Failed to turn on audio.', error);
-          }
-        });
-        bravia.send('PowerOff');
+        this.off();
         break;
 
       default:
         // on/off 以外のデータの場合何もしない
         break;
     }
+  }
+
+  static on() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.on);
+    bravia.send('WakeUp');
+  }
+
+  static off() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.off);
+    bravia.send('PowerOff');
   }
 }
 
