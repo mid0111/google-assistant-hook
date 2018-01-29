@@ -6,7 +6,8 @@
       "tvLog": "tv/log",
       "podcastLog": "podcast/log",
       "airconLog": "aircon/log",
-      "lightLog": "light/log"
+      "lightLog": "light/log",
+      "audioLog": "audio/log"
     }
   },
   "googleHome": {
