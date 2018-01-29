@@ -5,17 +5,25 @@ class Audio {
   static doAction(data) {
     switch (data.text) {
       case 'on':
-        IRClient.send(config.ir.audio.name, config.ir.audio.command.turnOn);
+        this.on();
         break;
 
       case 'off':
-        IRClient.send(config.ir.audio.name, config.ir.audio.command.turnOff);
+        this.off();
         break;
 
       default:
         // on/off 以外のデータの場合何もしない
         break;
     }
+  }
+
+  static on() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.on);
+  }
+
+  static off() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.off);
   }
 }
 

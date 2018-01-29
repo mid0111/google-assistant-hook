@@ -48,7 +48,11 @@ router.get('/:name', function(req, res) {
 
 router.put('/:name', function(req, res) {
   const name = req.params.name;
-  const data = req.body.data;
+  let data = req.body.data;
+
+  // 小文字にして登録
+  data = data.map((machineName) => machineName.toLowerCase());
+
   FirebaseClient.set(config.database.path.appShortcut, name, data, (err) => {
     if (err) {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR)

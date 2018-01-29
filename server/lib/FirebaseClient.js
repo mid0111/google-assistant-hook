@@ -1,12 +1,6 @@
 var admin = require('firebase-admin');
 
-var GoogleFit = require('./GoogleFit');
-var TV = require('./TV');
-var Audio = require('./Audio');
-var Podcast = require('./Podcast');
 var Logger = require('./Logger');
-var Aircon = require('./Aircon');
-var Light = require('./Light');
 var logger = new Logger();
 
 var config = require('../config/app.json');
@@ -14,42 +8,10 @@ var serviceAccount = require('../config/serviceAccountKey.json');
 
 class FirebaseClient {
 
-  static watch() {
+  static initializeApp() {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
       databaseURL: `https://${config.database.name}.firebaseio.com`
-    });
-
-    var googleFit = new GoogleFit();
-
-    // Google Fit のログデータ
-    this.watchAndAction(config.database.path.googleFitLog, (value) => {
-      googleFit.regist(value);
-    });
-
-    // TV のログデータ
-    this.watchAndAction(config.database.path.tvLog, (value) => {
-      TV.doAction(value);
-    });
-
-    // オーディオ のログデータ
-    this.watchAndAction(config.database.path.audioLog, (value) => {
-      Audio.doAction(value);
-    });
-
-    // podcast のログデータ
-    this.watchAndAction(config.database.path.podcastLog, (value) => {
-      Podcast.play(value);
-    });
-
-    // エアコン のログデータ
-    this.watchAndAction(config.database.path.airconLog, (value) => {
-      Aircon.doAction(value);
-    });
-
-    // ライト のログデータ
-    this.watchAndAction(config.database.path.lightLog, (value) => {
-      Light.doAction(value);
     });
   }
 

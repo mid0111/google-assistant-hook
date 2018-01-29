@@ -10,19 +10,27 @@ class TV {
   static doAction(data) {
     switch (data.text) {
       case 'on':
-        IRClient.send(config.ir.audio.name, config.ir.audio.command.turnOn);
-        bravia.send('WakeUp');
-
+        this.on();
         break;
+
       case 'off':
-        IRClient.send(config.ir.audio.name, config.ir.audio.command.turnOff);
-        bravia.send('PowerOff');
+        this.off();
         break;
 
       default:
         // on/off 以外のデータの場合何もしない
         break;
     }
+  }
+
+  static on() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.on);
+    bravia.send('WakeUp');
+  }
+
+  static off() {
+    IRClient.send(config.ir.audio.name, config.ir.audio.command.off);
+    bravia.send('PowerOff');
   }
 }
 

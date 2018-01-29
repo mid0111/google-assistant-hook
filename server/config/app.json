@@ -32,8 +32,8 @@
     "audio": {
       "name": "audio",
       "command": {
-        "turnOn": "on",
-        "turnOff": "off"
+        "on": "on",
+        "off": "off"
       }
     },
     "aircon": {

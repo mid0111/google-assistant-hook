@@ -5,15 +5,15 @@ class Aircon {
   static doAction(data) {
     switch (data.text) {
       case 'heat':
-        IRClient.send(config.ir.aircon.name, config.ir.aircon.command.heat);
+        this.heatOn();
         break;
 
       case 'cold':
-        IRClient.send(config.ir.aircon.name, config.ir.aircon.command.cold);
+        this.coldOn();
         break;
 
       case 'stop':
-        IRClient.send(config.ir.aircon.name, config.ir.aircon.command.stop);
+        this.off();
         break;
 
       default:
@@ -21,6 +21,19 @@ class Aircon {
         break;
     }
   }
+
+  static heatOn() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.heat);
+  }
+
+  static coldOn() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.cold);
+  }
+
+  static off() {
+    IRClient.send(config.ir.aircon.name, config.ir.aircon.command.stop);
+  }
+
 }
 
 module.exports = Aircon;
