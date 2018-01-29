@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
 });
 
 // Firebase のフック設定
-var FirebaseHook = require('./lib/FirebaseHook');
-FirebaseHook.watch();
+var FirebaseClient = require('./lib/FirebaseClient');
+FirebaseClient.watch();
 
 module.exports = app;

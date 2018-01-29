@@ -12,7 +12,7 @@ var logger = new Logger();
 var config = require('../config/app.json');
 var serviceAccount = require('../config/serviceAccountKey.json');
 
-class FirebaseHook {
+class FirebaseClient {
 
   static watch() {
     admin.initializeApp({
@@ -73,6 +73,29 @@ class FirebaseHook {
       logger.info('Failed to read data', err);
     });
   }
+
+  static get(path, callback) {
+    var db = admin.database();
+    var ref = db.ref(path);
+    ref.on('value', function(snapshot) {
+      logger.info(`Receive data. ${path} ${JSON.stringify(snapshot.val())}`);
+      return callback(null, snapshot.val());
+    }, function(err) {
+      logger.error('Failed to read data', err);
+      return callback(err);
+    });
+  }
+
+  static set(path, column, data, callback) {
+    var db = admin.database();
+    var ref = db.ref(path);
+    var usersRef = ref.child(column);
+    logger.info(`Set data. ${path} ${column} ${data}`);
+    usersRef.set(data, (err) => {
+      logger.error('Failed to set data', err);
+      return callback(err);
+    });
+  }
 }
 
-module.exports = FirebaseHook;
+module.exports = FirebaseClient;

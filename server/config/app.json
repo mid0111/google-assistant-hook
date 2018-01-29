@@ -2,6 +2,8 @@
   "database": {
     "name": "refined-byte-188701",
     "path": {
+      "appShortcut": "app/shortcut",
+      "shortcutLog": "shortcut/log",
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",
       "podcastLog": "podcast/log",
