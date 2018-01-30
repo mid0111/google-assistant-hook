@@ -1,3 +1,37 @@
-<p>
-  shortcut works!
-</p>
+<div class="menu jumbotron">
+  <h3>{{title}}</h3>
+
+  <p>{{description}}</p>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6 pb-3" *ngFor="let shortcut of shortcuts">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{shortcut.name}}</h5>
+        <h6 class="mb-2">
+          <span *ngFor="let word of shortcut.words" class="badge badge-secondary mr-1">{{word}}</span>
+        </h6>
+
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Machine</th>
+              <th scope="col">Operation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let function of shortcut.functions">
+              <td>{{function.name}}</td>
+              <td>{{function.operation}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="{{shortcut.path}}" class="btn btn-primary">編集</a>
+      </div>
+    </div>
+  </div>
+
+</div>
