@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { MessageComponent } from './message/message.component';
+import { ShortcutModule } from './shortcut/shortcut.module';
 import { StreamModule } from './stream/stream.module';
 import { RebuildModule } from './rebuild/rebuild.module';
 
@@ -25,6 +26,7 @@ describe('AppComponent', () => {
         SharedModule,
         AppRoutingModule,
         HomeModule,
+        ShortcutModule,
         StreamModule,
         RebuildModule,
       ],

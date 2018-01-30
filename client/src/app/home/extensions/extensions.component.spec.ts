@@ -16,7 +16,7 @@ let page: Page;
 
 const mockExtensions: Extension[] = [{
   title: 'Stream Music',
-  description: 'Web 上の音楽を Google Home でストリーム再生する',
+  description: 'Web 上の音楽を Google Home でストリーム再生',
   path: '/stream',
   btnName: 'Stream Music',
 }];

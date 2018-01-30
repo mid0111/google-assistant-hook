@@ -25,12 +25,16 @@ describe('google-assistant-hook app-home', () => {
     expect(page.loginMessage.isPresent()).toBeTruthy();
     expect(page.loginMessage.getText()).toEqual('Google Fit を利用する場合は、あらかじめ Google にログイン してください');
 
+    expect(page.shortcutTitle.getText()).toEqual('ショートカット');
+    expect(page.shortcutDescription.getText()).toEqual('音声コマンドのショートカット機能を利用する');
+    expect(page.shortcutButton.getText()).toEqual('Shortcut');
+
     expect(page.rebuildFmTitle.getText()).toEqual('Rebuild FM ポッドキャスト');
-    expect(page.rebuildFmDescription.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生する');
+    expect(page.rebuildFmDescription.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生');
     expect(page.rebuildFmButton.getText()).toEqual('Rebuild FM');
 
     expect(page.streamMusicTitle.getText()).toEqual('Stream Music');
-    expect(page.streamMusicDescription.getText()).toEqual('Web 上の音楽を Google Home でストリーム再生する');
+    expect(page.streamMusicDescription.getText()).toEqual('Web 上の音楽を Google Home でストリーム再生');
     expect(page.streamMusicButton.getText()).toEqual('Stream Music');
   });
 
@@ -41,6 +45,11 @@ describe('google-assistant-hook app-home', () => {
 
     browser.sleep(500);
     expect(browser.getCurrentUrl()).toMatch(/https:\/\/dummy.com\/oauth/);
+  });
+
+  it('Shortcut ボタン押下で shortcut ページに遷移すること', () => {
+    page.shortcutButton.click();
+    expect(browser.getCurrentUrl()).toMatch(/http:\/\/[^\/]+\/shortcut$/);
   });
 
   it('Rebuild FM ボタン押下で stream ページに遷移すること', () => {
