@@ -38,4 +38,16 @@ describe('ExtensionService', () => {
       });
     });
   });
+
+  it('Extension １件を取得できること', () => {
+    service.getExtension('/shortcut').subscribe((extension) => {
+      expect(extension).toEqual({
+        title: 'ショートカット',
+        description: '音声コマンドのショートカット機能を利用する',
+        path: '/shortcut',
+        btnName: 'Shortcut',
+        materialIcon: 'speaker_notes',
+      });
+    });
+  });
 });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/map';
 
 import { Extension } from './extension';
 
@@ -29,5 +30,12 @@ export class ExtensionService {
       btnName: 'Stream Music',
       materialIcon: 'queue_music',
     }]);
+  }
+
+  getExtension(path: String): Observable<Extension> {
+    return this.getExtensions()
+      .map((extensions) => {
+        return extensions.filter((extension) => extension.path === path)[0];
+      });
   }
 }

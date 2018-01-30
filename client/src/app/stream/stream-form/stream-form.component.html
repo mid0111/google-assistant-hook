@@ -1,6 +1,7 @@
 <form (ngSubmit)="onSubmit()" #streamForm="ngForm">
   <app-spinner *ngIf="loading" [coverPage]="true"></app-spinner>
   <div class="form-group mb-3">
+    <label for="streamUrl">Google Home で再生したい音楽の URL を入力してください</label>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">URL</span>
