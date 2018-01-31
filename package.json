@@ -21,6 +21,7 @@
     "lint:client": "ng lint",
     "e2e": "bash -x ./scripts/e2e.sh"
   },
+  "eslintIgnore": ["server/public/*"],
   "nodemonConfig": {
     "ignore": [
       "server/test",
