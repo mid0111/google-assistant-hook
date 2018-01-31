@@ -54,7 +54,9 @@ class FirebaseClient {
     var usersRef = ref.child(column);
     logger.info(`Set data. ${path} ${column} ${data}`);
     usersRef.set(data, (err) => {
-      logger.error('Failed to set data', err);
+      if (err) {
+        logger.error('Failed to set data', err);
+      }
       return callback(err);
     });
   }
