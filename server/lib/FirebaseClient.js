@@ -39,7 +39,7 @@ class FirebaseClient {
   static get(path, callback) {
     var db = admin.database();
     var ref = db.ref(path);
-    ref.on('value', function(snapshot) {
+    ref.once('value', function(snapshot) {
       logger.info(`Receive data. ${path} ${JSON.stringify(snapshot.val())}`);
       return callback(null, snapshot.val());
     }, function(err) {
