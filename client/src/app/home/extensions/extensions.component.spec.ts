@@ -2,7 +2,7 @@ import { } from 'jasmine';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core/src/debug/debug_node';
+import { DebugElement } from '@angular/core';
 import { of } from 'rxjs/observable/of';
 
 import { ExtensionsComponent } from './extensions.component';

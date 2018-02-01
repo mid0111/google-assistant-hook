@@ -1,15 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { DebugElement } from '@angular/core/src/debug/debug_node';
+import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { ShortcutListComponent } from './shortcut-list.component';
 import { ShortcutService, ShortcutImpl } from '../model/shortcut.service';
 import { SharedModule } from '../shared/shared.module';
 import { MessageService } from '../model/message.service';
-import { MessageType } from '../model/message';
+import { ShortcutComponent } from './shortcut/shortcut.component';
 
 let component: ShortcutListComponent;
 let fixture: ComponentFixture<ShortcutListComponent>;
@@ -71,14 +69,14 @@ const testShortcuts = [
   ),
 ];
 
-describe('ShortcutComponent', () => {
+describe('ShortcutListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         ShortcutListComponent,
+        ShortcutComponent,
       ],
       imports: [
-        HttpClientModule,
         SharedModule,
       ],
       providers: [
@@ -181,68 +179,6 @@ describe('ShortcutComponent', () => {
     });
   }));
 
-  it('編集した値を保存できること', async(() => {
-    spyOn(shortcutService, 'updateShortcut')
-      .and.returnValue(of(null));
-
-    page.getCard(1).button.click();
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      page.addPageElements();
-
-      // 「電気」を「なし」に変更
-      page.getCard(1).lightOptions[1].checked = true;
-      fixture.detectChanges();
-      return fixture.whenStable();
-    })
-      .then(() => {
-        page.addPageElements();
-        page.getCard(1).button.click();
-
-        fixture.detectChanges();
-        return fixture.whenStable();
-      })
-      .then(() => {
-        page.addPageElements();
-        expect(page.getCard(1).button.textContent).toEqual('編集');
-      });
-  }));
-
-  it('保存でエラーが発生した場合エラーが通知されること', async(() => {
-    const testError = new Error('Test error');
-    spyOn(messageService, 'set');
-    spyOn(shortcutService, 'updateShortcut')
-      .and.returnValue(new Observable(
-        (subscriber) => subscriber.error(testError)));
-
-    page.getCard(1).button.click();
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      page.addPageElements();
-
-      // 「電気」を「なし」に変更
-      page.getCard(1).lightOptions[1].checked = true;
-      fixture.detectChanges();
-      return fixture.whenStable();
-    })
-      .then(() => {
-        page.addPageElements();
-        page.getCard(1).button.click();
-
-        fixture.detectChanges();
-        return fixture.whenStable();
-      })
-      .then(() => {
-        page.addPageElements();
-        expect(page.getCard(1).button.textContent).toEqual('保存');
-
-        expect(messageService.set).toHaveBeenCalledWith({
-          message: 'ショートカットの更新に失敗しました。',
-          type: MessageType.ERROR,
-          error: testError,
-        });
-      });
-  }));
 });
 
 class Page {
