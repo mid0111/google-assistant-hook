@@ -5,14 +5,14 @@ import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
-import { ShortcutComponent } from './shortcut.component';
+import { ShortcutListComponent } from './shortcut-list.component';
 import { ShortcutService, ShortcutImpl } from '../model/shortcut.service';
 import { SharedModule } from '../shared/shared.module';
 import { MessageService } from '../model/message.service';
 import { MessageType } from '../model/message';
 
-let component: ShortcutComponent;
-let fixture: ComponentFixture<ShortcutComponent>;
+let component: ShortcutListComponent;
+let fixture: ComponentFixture<ShortcutListComponent>;
 let shortcutService: ShortcutService;
 let messageService: MessageService;
 let page: Page;
@@ -75,7 +75,7 @@ describe('ShortcutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ShortcutComponent,
+        ShortcutListComponent,
       ],
       imports: [
         HttpClientModule,
@@ -281,7 +281,7 @@ class Page {
 }
 
 function createComponent() {
-  fixture = TestBed.createComponent(ShortcutComponent);
+  fixture = TestBed.createComponent(ShortcutListComponent);
   component = fixture.componentInstance;
   shortcutService = fixture.debugElement.injector.get(ShortcutService);
   messageService = fixture.debugElement.injector.get(MessageService);

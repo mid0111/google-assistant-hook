@@ -8,14 +8,14 @@ import { MessageType } from '../model/message';
 
 @Component({
   selector: 'app-shortcut',
-  templateUrl: './shortcut.component.html',
-  styleUrls: ['./shortcut.component.scss'],
+  templateUrl: './shortcut-list.component.html',
+  styleUrls: ['./shortcut-list.component.scss'],
   providers: [
     ExtensionService,
     ShortcutService,
   ],
 })
-export class ShortcutComponent implements OnInit {
+export class ShortcutListComponent implements OnInit {
   title: String;
   description: String;
   shortcuts: Shortcut[];

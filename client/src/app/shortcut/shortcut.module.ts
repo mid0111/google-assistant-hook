@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShortcutComponent } from './shortcut.component';
+import { ShortcutListComponent } from './shortcut-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
-  declarations: [ShortcutComponent],
+  declarations: [ShortcutListComponent],
 })
 export class ShortcutModule { }
