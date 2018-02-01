@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/map';
 
 import { Extension } from './extension';
 
@@ -11,17 +12,30 @@ export class ExtensionService {
 
   getExtensions(): Observable<Extension[]> {
     return of([{
+      title: 'ショートカット',
+      description: '音声コマンドのショートカット機能を利用する',
+      path: '/shortcut',
+      btnName: 'Shortcut',
+      materialIcon: 'speaker_notes',
+    }, {
       title: 'Rebuild FM ポッドキャスト',
-      description: 'Rebuild FM のエピソードを Google Home で再生する',
+      description: 'Rebuild FM のエピソードを Google Home で再生',
       path: '/rebuild',
       btnName: 'Rebuild FM',
       backgroundImage: 'https://rebuild.fm/images/bg.jpg',
     }, {
       title: 'Stream Music',
-      description: 'Web 上の音楽を Google Home でストリーム再生する',
+      description: 'Web 上の音楽を Google Home でストリーム再生',
       path: '/stream',
       btnName: 'Stream Music',
       materialIcon: 'queue_music',
     }]);
+  }
+
+  getExtension(path: String): Observable<Extension> {
+    return this.getExtensions()
+      .map((extensions) => {
+        return extensions.filter((extension) => extension.path === path)[0];
+      });
   }
 }

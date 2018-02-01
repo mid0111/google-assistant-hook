@@ -37,7 +37,7 @@ describe('StreamComponent', () => {
   it('StreamComponent が作成できること', () => {
     expect(component).toBeTruthy();
     expect(page.title.textContent).toBe('Stream Music');
-    expect(page.description.textContent).toBe('Google Home で再生したい音楽の URL を入力してください。');
+    expect(page.description.textContent).toBe('Web 上の音楽を Google Home でストリーム再生');
   });
 });
 

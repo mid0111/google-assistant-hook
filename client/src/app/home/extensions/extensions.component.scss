@@ -1,7 +1,9 @@
+@import '../../shared/custom.scss';
+
 .card {
   .icon {
-    background-color: #868e96;
-    color: #f8f9fa;
+    background-color: $gray-600;
+    color: $gray-100;
     text-align: center;
   }
 

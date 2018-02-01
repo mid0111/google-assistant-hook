@@ -1,0 +1,13 @@
+<div class="menu jumbotron">
+  <h3>{{title}}</h3>
+
+  <p>{{description}}</p>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6 pb-3" *ngFor="let shortcut of shortcuts">
+    <app-shortcut [shortcut]="shortcut"></app-shortcut>
+  </div>
+
+</div>

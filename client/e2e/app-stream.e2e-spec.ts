@@ -11,7 +11,8 @@ describe('google-assistant-hook app-stream', () => {
 
   it('初期表示', () => {
     expect(page.title.getText()).toEqual('Stream Music');
-    expect(page.urlLabel.getText()).toEqual('Google Home で再生したい音楽の URL を入力してください。');
+    expect(page.description.getText()).toEqual('Web 上の音楽を Google Home でストリーム再生');
+    expect(page.urlLabel.getText()).toEqual('Google Home で再生したい音楽の URL を入力してください');
 
     expect(page.urlInput.getAttribute('value')).toEqual('');
     expect(page.submitButton.getAttribute('disabled')).toBeTruthy();

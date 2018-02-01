@@ -1,4 +1,5 @@
 const cssBeautify = require('js-beautify')['css_beautify'];
+const htmlBeautify = require('js-beautify')['html_beautify'];
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
@@ -12,6 +13,17 @@ glob('client/**/*.scss', {
   files.forEach(file => {
     const data = fs.readFileSync(file, 'utf8');
     const nextData = cssBeautify(data, options);
+    fs.writeFileSync(file, nextData, 'utf8');
+  });
+});
+
+// html
+glob('client/**/*.html', {
+  absolute: true
+}, (er, files) => {
+  files.forEach(file => {
+    const data = fs.readFileSync(file, 'utf8');
+    const nextData = htmlBeautify(data, options);
     fs.writeFileSync(file, nextData, 'utf8');
   });
 });

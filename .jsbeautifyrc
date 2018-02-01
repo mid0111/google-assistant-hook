@@ -9,5 +9,9 @@
     "newline_between_rules": true,
     "space_around_combinator": true,
     "space_around_selector_separator": true
+  },
+  "html": {
+    "wrap_line_length": 60,
+    "wrap_attributes": "auto"
   }
 }

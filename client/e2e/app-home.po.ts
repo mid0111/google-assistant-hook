@@ -7,6 +7,10 @@ export class AppHomePage {
   loginMessage: ElementFinder;
   loginLink: ElementFinder;
 
+  shortcutTitle: ElementFinder;
+  shortcutDescription: ElementFinder;
+  shortcutButton: ElementFinder;
+
   rebuildFmTitle: ElementFinder;
   rebuildFmDescription: ElementFinder;
   rebuildFmButton: ElementFinder;
@@ -26,12 +30,19 @@ export class AppHomePage {
     this.loginMessage = element(by.css('app-home .login-message'));
     this.loginLink = this.loginMessage.element(by.css('a'));
 
-    this.rebuildFmTitle = element.all(by.css('app-home app-extensions .card-title')).get(0);
-    this.rebuildFmDescription = element.all(by.css('app-home app-extensions .card-text')).get(0);
-    this.rebuildFmButton = element.all(by.css('app-home app-extensions .btn')).get(0);
+    let index = 0;
+    this.shortcutTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);
+    this.shortcutDescription = element.all(by.css('app-home app-extensions .card-text')).get(index);
+    this.shortcutButton = element.all(by.css('app-home app-extensions .btn')).get(index);
 
-    this.streamMusicTitle = element.all(by.css('app-home app-extensions .card-title')).get(1);
-    this.streamMusicDescription = element.all(by.css('app-home app-extensions .card-text')).get(1);
-    this.streamMusicButton = element.all(by.css('app-home app-extensions .btn')).get(1);
+    index++;
+    this.rebuildFmTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);
+    this.rebuildFmDescription = element.all(by.css('app-home app-extensions .card-text')).get(index);
+    this.rebuildFmButton = element.all(by.css('app-home app-extensions .btn')).get(index);
+
+    index++;
+    this.streamMusicTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);
+    this.streamMusicDescription = element.all(by.css('app-home app-extensions .card-text')).get(index);
+    this.streamMusicButton = element.all(by.css('app-home app-extensions .btn')).get(index);
   }
 }

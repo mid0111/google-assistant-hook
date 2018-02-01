@@ -1,6 +1,6 @@
 import { AppRebuildPage } from './app-rebuild.po';
 
-describe('google-assistant-hook app-stream', () => {
+describe('google-assistant-hook app-rebuild', () => {
   let page: AppRebuildPage;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('google-assistant-hook app-stream', () => {
 
   it('初期表示', () => {
     expect(page.title.getText()).toEqual('Rebuild FM ポッドキャスト');
-    expect(page.urlLabel.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生する');
+    expect(page.urlLabel.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生');
 
     expect(page.podcasts.count()).toEqual(2);
 

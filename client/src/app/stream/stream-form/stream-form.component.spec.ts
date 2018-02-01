@@ -33,6 +33,7 @@ describe('StreamFormComponent', () => {
   }));
 
   it('フォーム画面が表示されること', () => {
+    expect(page.labelForUrlInput.textContent).toBe('Google Home で再生したい音楽の URL を入力してください');
     expect(page.urlInput.value).toBe('');
     expect(page.submitButton.textContent).toBe('再生');
     expect(page.submitButton.hasAttribute('disabled')).toBeTruthy();
@@ -114,10 +115,12 @@ describe('StreamFormComponent', () => {
 });
 
 class Page {
+  labelForUrlInput: HTMLElement;
   urlInput: HTMLInputElement;
   submitButton: HTMLElement;
 
   addPageElements() {
+    this.labelForUrlInput = fixture.debugElement.query(By.css('label[for="streamUrl"]')).nativeElement;
     this.urlInput = fixture.debugElement.query(By.css('#streamUrl')).nativeElement;
     this.submitButton = fixture.debugElement.query(By.css('button[type="submit"]')).nativeElement;
   }

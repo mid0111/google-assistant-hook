@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MessageService } from './model/message.service';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
+import { ShortcutModule } from './shortcut/shortcut.module';
 import { StreamModule } from './stream/stream.module';
 import { RebuildModule } from './rebuild/rebuild.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { MessageComponent } from './message/message.component';
     SharedModule,
     AppRoutingModule,
     HomeModule,
+    ShortcutModule,
     StreamModule,
     RebuildModule,
   ],
