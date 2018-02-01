@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { AppSettings } from '../app.settings';
 import { Machine, Shortcut } from './shortcut';
 
-class ShortcutImpl implements Shortcut {
+export class ShortcutImpl implements Shortcut {
   id: number;
   name: String;
   words: String[];

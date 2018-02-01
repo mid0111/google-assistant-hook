@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ExtensionService } from '../model/extension.service';
+import { Shortcut, Machine } from '../model/shortcut';
+import { ShortcutService } from '../model/shortcut.service';
+import { MessageService } from '../model/message.service';
+import { MessageType } from '../model/message';
 
 @Component({
   selector: 'app-shortcut',
@@ -7,51 +12,52 @@ import { ExtensionService } from '../model/extension.service';
   styleUrls: ['./shortcut.component.scss'],
   providers: [
     ExtensionService,
+    ShortcutService,
   ],
 })
 export class ShortcutComponent implements OnInit {
   title: String;
   description: String;
-  shortcuts = [{
-    name: 'おやすみなさい',
-    words: ['おやすみなさい', 'おやすみ', 'いってきます'],
-    functions: [{
-      name: '電気',
-      operation: 'OFF',
-    }, {
-      name: 'TV',
-      operation: 'OFF',
-    }, {
-      name: 'オーディオ',
-      operation: 'OFF',
-    }, {
-      name: 'エアコン',
-      operation: 'OFF',
-    }],
-  }, {
-    name: 'おはよう',
-    words: ['おはよう', 'ただいま'],
-    functions: [{
-      name: '電気',
-      operation: 'ON',
-    }, {
-      name: 'TV',
-      operation: 'ON',
-    }, {
-      name: 'オーディオ',
-      operation: 'ON',
-    }, {
-      name: 'エアコン',
-      operation: '暖房 ON',
-    }],
-  }];
+  shortcuts: Shortcut[];
 
   constructor(
     private extensionService: ExtensionService,
+    private shortcutService: ShortcutService,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
     this.getExtension();
+    this.getShortcuts();
+  }
+
+  onEdit(shortcut: Shortcut): void {
+    shortcut.isEditMode = true;
+  }
+
+  onSave(shortcut: Shortcut): void {
+    this.shortcutService.updateShortcut(shortcut)
+      .subscribe(
+      () => {
+        shortcut.isEditMode = false;
+      },
+      (error) => {
+        this.messageService.set({
+          message: 'ショートカットの更新に失敗しました。',
+          type: MessageType.ERROR,
+          error,
+        });
+      });
+  }
+
+  checked(shortcut: Shortcut, selectedMachine: Machine, operationIndex: number): Boolean {
+    const machine = shortcut.machines.filter((value) => value.name === selectedMachine.name)[0];
+    return shortcut.getMachine(selectedMachine.name).selectedOperation === machine.operations[operationIndex];
+  }
+
+  onSelectionChange(shortcut: Shortcut, selectedMachine: Machine, operationIndex: number): void {
+    const machine = shortcut.machines.filter((value) => value.name === selectedMachine.name)[0];
+    shortcut.getMachine(selectedMachine.name).selectedOperation = machine.operations[operationIndex];
   }
 
   getExtension(): void {
@@ -60,5 +66,10 @@ export class ShortcutComponent implements OnInit {
         this.title = extension.title;
         this.description = extension.description;
       });
+  }
+
+  getShortcuts(): void {
+    this.shortcutService.getShortcuts()
+      .subscribe((shortcuts) => this.shortcuts = shortcuts);
   }
 }

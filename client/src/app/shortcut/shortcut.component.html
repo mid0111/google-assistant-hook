@@ -23,13 +23,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let function of shortcut.functions">
-              <td>{{function.name}}</td>
-              <td>{{function.operation}}</td>
+            <tr *ngFor="let machine of shortcut.machines">
+              <td class="machine-name">{{machine.name}}</td>
+              <td class="machine-operation">
+                <span *ngIf="!shortcut.isEditMode">{{machine.selectedOperation}}</span>
+                <div *ngIf="shortcut.isEditMode">
+                  <div *ngFor="let operation of machine.operations; index as operationIndex"
+                    class="form-check">
+                    <input class="form-check-input" type="radio" name="radio-{{shortcut.id}}-{{machine.id}}"
+                      id="radio-{{shortcut.id}}-{{machine.id}}-{{operationIndex}}"
+                      value="radio-{{shortcut.id}}-{{machine.id}}-{{operationIndex}}"
+                      [checked]="checked(shortcut, machine, operationIndex)"
+                      (change)="onSelectionChange(shortcut, machine, operationIndex)">
+                    <label class="form-check-label" for="radio-{{shortcut.id}}-{{machine.id}}-{{operationIndex}} ">{{operation}}</label>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
-        <a href="{{shortcut.path}}" class="btn btn-primary">編集</a>
+        <div *ngIf="!shortcut.isEditMode " class="btn btn-primary " (click)="onEdit(shortcut) ">編集</div>
+        <div *ngIf="shortcut.isEditMode " class="btn btn-primary " (click)="onSave(shortcut) ">保存</div>
       </div>
     </div>
   </div>
