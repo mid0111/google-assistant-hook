@@ -4,6 +4,8 @@ const Logger = require('./Logger');
 
 const logger = new Logger();
 
+let index = 0;
+
 class IRClient {
 
   static send(name, command, callback) {
@@ -18,7 +20,16 @@ class IRClient {
           return callback(error);
         }
       });
-    }, 500);
+    }, this.getInterval());
+  }
+
+  static getInterval() {
+    const interval = index % 5 * 300;
+    index += 1;
+    if (index > 5) {
+      index = 0;
+    }
+    return interval;
   }
 }
 
