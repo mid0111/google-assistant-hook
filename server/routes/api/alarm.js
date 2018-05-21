@@ -19,4 +19,20 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/', function(req, res) {
+  const alarm = new Alarm(req.body.time, req.body.message);
+  alarm.create().then(() => {
+      res.status(HttpStatus.CREATED).json({
+        time: req.body.time,
+        message: req.body.message
+      });
+    })
+    .catch((err) => {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({
+          message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
+        });
+    });
+});
+
 module.exports = router;
