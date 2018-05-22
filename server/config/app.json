@@ -3,6 +3,7 @@
     "name": "refined-byte-188701",
     "path": {
       "appShortcut": "app/shortcut",
+      "appAlarm": "app/alarm",
       "shortcutLog": "shortcut/log",
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",

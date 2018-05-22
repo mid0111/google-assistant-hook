@@ -36,6 +36,12 @@ class FirebaseClient {
     });
   }
 
+  /**
+   * DB からパスで指定されたエンティティの一覧を取得する.
+   * @param {String} path DB のパス
+   * @param {Function} callback callback関数
+   * @returns {*} callback 実行結果
+   */
   static get(path, callback) {
     var db = admin.database();
     var ref = db.ref(path);
@@ -48,6 +54,14 @@ class FirebaseClient {
     });
   }
 
+  /**
+   * DB のパスで指定されたエンティティを更新/追加する.
+   * @param {String} path DB のパス
+   * @param {String} column DB のカラム
+   * @param {Object} data 更新/追加するデータ
+   * @param {Function} callback callback関数
+   * @returns {*} callback 実行結果
+   */
   static set(path, column, data, callback) {
     var db = admin.database();
     var ref = db.ref(path);
