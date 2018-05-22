@@ -29,6 +29,10 @@ describe('google-assistant-hook app-home', () => {
     expect(page.shortcutDescription.getText()).toEqual('音声コマンドのショートカット機能を利用する');
     expect(page.shortcutButton.getText()).toEqual('Shortcut');
 
+    expect(page.alarmTitle.getText()).toEqual('アラーム');
+    expect(page.alarmDescription.getText()).toEqual('アラームの設定をする');
+    expect(page.alarmButton.getText()).toEqual('Alarm');
+
     expect(page.rebuildFmTitle.getText()).toEqual('Rebuild FM ポッドキャスト');
     expect(page.rebuildFmDescription.getText()).toEqual('Rebuild FM のエピソードを Google Home で再生');
     expect(page.rebuildFmButton.getText()).toEqual('Rebuild FM');
@@ -50,6 +54,11 @@ describe('google-assistant-hook app-home', () => {
   it('Shortcut ボタン押下で shortcut ページに遷移すること', () => {
     page.shortcutButton.click();
     expect(browser.getCurrentUrl()).toMatch(/http:\/\/[^\/]+\/shortcut$/);
+  });
+
+  it('Alarm ボタン押下で alarm ページに遷移すること', () => {
+    page.alarmButton.click();
+    expect(browser.getCurrentUrl()).toMatch(/http:\/\/[^\/]+\/alarm$/);
   });
 
   it('Rebuild FM ボタン押下で stream ページに遷移すること', () => {
