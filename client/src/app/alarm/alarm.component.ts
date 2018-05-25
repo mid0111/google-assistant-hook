@@ -10,9 +10,6 @@ export class AlarmComponent implements OnInit {
   title: string;
   description: string;
 
-  time: string;
-  message: string;
-
   alarms: {
     time: string;
     message: string;
@@ -38,8 +35,5 @@ export class AlarmComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  onSubmit() {
   }
 }

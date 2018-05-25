@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AlarmComponent } from './alarm.component';
 import { SharedModule } from '../shared/shared.module';
+import { AlarmFormComponent } from './alarm-form/alarm-form.component';
 
 describe('AlarmComponent', () => {
   let component: AlarmComponent;
@@ -8,7 +9,10 @@ describe('AlarmComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AlarmComponent],
+      declarations: [
+        AlarmComponent,
+        AlarmFormComponent,
+      ],
       imports: [SharedModule],
     })
       .compileComponents();
