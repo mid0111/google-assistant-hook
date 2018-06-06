@@ -7,13 +7,12 @@ describe('/api/alarm', () => {
   const request = new Request();
 
   it('Alarm 一覧取得ができること', (done) => {
-    const now = new Date().getTime();
     const mockData = [{
-        time: now,
+        time: '08:12',
         message: 'サンプルメッセージ１'
       },
       {
-        time: now + 100,
+        time: '08:14',
         message: 'サンプルメッセージ２'
       }
     ];
@@ -26,11 +25,11 @@ describe('/api/alarm', () => {
       .expect((res) => {
         assert.deepStrictEqual(res.body, {
           alarms: [{
-              time: now,
+              time: '08:12',
               message: 'サンプルメッセージ１'
             },
             {
-              time: now + 100,
+              time: '08:14',
               message: 'サンプルメッセージ２'
             }
           ]
@@ -56,13 +55,12 @@ describe('/api/alarm', () => {
   });
 
   it('Alarm の追加ができること', (done) => {
-    const now = new Date().getTime();
     const mockData = [{
-        time: now,
+        time: '08:12',
         message: 'サンプルメッセージ１'
       },
       {
-        time: now + 100,
+        time: '08:14',
         message: 'サンプルメッセージ２'
       }
     ];
@@ -74,13 +72,13 @@ describe('/api/alarm', () => {
     request
       .post('/api/alarm')
       .send({
-        time: now + 1,
+        time: '08:15',
         message: '新規メッセージ'
       })
       .expect(201)
       .expect((res) => {
         assert.deepStrictEqual(res.body, {
-          time: now + 1,
+          time: '08:15',
           message: '新規メッセージ'
         });
       })
@@ -88,13 +86,12 @@ describe('/api/alarm', () => {
   });
 
   it('Alarm 追加でエラーが発生した場合 500 エラーとなること', (done) => {
-    const now = new Date().getTime();
     const mockData = [{
-        time: now,
+        time: '08:12',
         message: 'サンプルメッセージ１'
       },
       {
-        time: now + 100,
+        time: '08:14',
         message: 'サンプルメッセージ２'
       }
     ];
@@ -108,7 +105,7 @@ describe('/api/alarm', () => {
     request
       .post('/api/alarm')
       .send({
-        time: new Date().getTime(),
+        time: '08:15',
         message: '新規メッセージ'
       })
       .expect(500)
