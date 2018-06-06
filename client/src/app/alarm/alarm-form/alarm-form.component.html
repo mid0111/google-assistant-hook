@@ -1,4 +1,5 @@
 <form (ngSubmit)="onSubmit()" #alarmForm="ngForm">
+  <app-spinner *ngIf="loading" [coverPage]="true"></app-spinner>
   <div class="form-row">
     <div class="form-group mb-3 col-sm-3">
       <label for="time">時刻</label>
