@@ -25,7 +25,7 @@ export class AlarmService {
           } as Alarm;
         });
       })
-      .mergeMap((alarms) => {
+      .map((alarms) => {
         this.alarmsSource.next(alarms);
         return alarms;
       });
