@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AlarmService } from '../model/alarm.service';
-import { MessageService } from '../model/message.service';
-import { Alarm } from '../model/alarm';
-import { MessageType } from '../model/message';
 import { Subscription } from 'rxjs/Subscription';
+
+import { AlarmService } from '../../model/alarm.service';
+import { MessageService } from '../../model/message.service';
+import { Alarm } from '../../model/alarm';
+import { MessageType } from '../../model/message';
 
 @Component({
   selector: 'app-alarm-list',
