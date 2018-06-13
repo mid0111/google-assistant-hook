@@ -12,13 +12,21 @@ describe('ExtensionService', () => {
     service.getExtensions().subscribe((extensions) => {
       let index = 0;
 
-      expect(extensions.length).toBe(3);
+      expect(extensions.length).toBe(4);
       expect(extensions[index++]).toEqual({
         title: 'ショートカット',
         description: '音声コマンドのショートカット機能を利用する',
         path: '/shortcut',
         btnName: 'Shortcut',
         materialIcon: 'speaker_notes',
+      });
+
+      expect(extensions[index++]).toEqual({
+        title: 'アラーム',
+        description: 'アラームの設定をする',
+        path: '/alarm',
+        btnName: 'Alarm',
+        materialIcon: 'alarm',
       });
 
       expect(extensions[index++]).toEqual({

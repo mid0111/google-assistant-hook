@@ -11,6 +11,10 @@ export class AppHomePage {
   shortcutDescription: ElementFinder;
   shortcutButton: ElementFinder;
 
+  alarmTitle: ElementFinder;
+  alarmDescription: ElementFinder;
+  alarmButton: ElementFinder;
+
   rebuildFmTitle: ElementFinder;
   rebuildFmDescription: ElementFinder;
   rebuildFmButton: ElementFinder;
@@ -34,6 +38,11 @@ export class AppHomePage {
     this.shortcutTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);
     this.shortcutDescription = element.all(by.css('app-home app-extensions .card-text')).get(index);
     this.shortcutButton = element.all(by.css('app-home app-extensions .btn')).get(index);
+
+    index++;
+    this.alarmTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);
+    this.alarmDescription = element.all(by.css('app-home app-extensions .card-text')).get(index);
+    this.alarmButton = element.all(by.css('app-home app-extensions .btn')).get(index);
 
     index++;
     this.rebuildFmTitle = element.all(by.css('app-home app-extensions .card-title')).get(index);

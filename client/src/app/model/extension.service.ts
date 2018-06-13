@@ -18,6 +18,12 @@ export class ExtensionService {
       btnName: 'Shortcut',
       materialIcon: 'speaker_notes',
     }, {
+      title: 'アラーム',
+      description: 'アラームの設定をする',
+      path: '/alarm',
+      btnName: 'Alarm',
+      materialIcon: 'alarm',
+    }, {
       title: 'Rebuild FM ポッドキャスト',
       description: 'Rebuild FM のエピソードを Google Home で再生',
       path: '/rebuild',

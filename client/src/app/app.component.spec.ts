@@ -13,6 +13,7 @@ import { MessageComponent } from './message/message.component';
 import { ShortcutModule } from './shortcut/shortcut.module';
 import { StreamModule } from './stream/stream.module';
 import { RebuildModule } from './rebuild/rebuild.module';
+import { AlarmModule } from './alarm/alarm.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -27,6 +28,7 @@ describe('AppComponent', () => {
         AppRoutingModule,
         HomeModule,
         ShortcutModule,
+        AlarmModule,
         StreamModule,
         RebuildModule,
       ],

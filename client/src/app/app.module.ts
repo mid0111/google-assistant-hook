@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MessageComponent } from './message/message.component';
+import { AlarmModule } from './alarm/alarm.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MessageComponent } from './message/message.component';
     SharedModule,
     AppRoutingModule,
     HomeModule,
+    AlarmModule,
     ShortcutModule,
     StreamModule,
     RebuildModule,
