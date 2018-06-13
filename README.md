@@ -52,3 +52,15 @@ Google Home を機能拡張するためのサーバです。
     ```bash
     pm2 start npm -- start
     ```
+
+## 開発
+
+1. 依存モジュール
+    ```bash
+    yarn install
+    ```
+1. コミット前
+    ```bash
+    npm run lint
+    npm test
+    ```
