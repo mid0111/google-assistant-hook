@@ -35,4 +35,16 @@ router.post('/', function(req, res) {
     });
 });
 
+router.delete('/:index', function(req, res) {
+  Alarm.deleteAt(req.params.index).then(() => {
+      res.status(HttpStatus.NO_CONTENT).send();
+    })
+    .catch((err) => {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({
+          message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
+        });
+    });
+});
+
 module.exports = router;

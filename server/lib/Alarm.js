@@ -32,6 +32,21 @@ class Alarm {
     });
   }
 
+  static deleteAt(index) {
+    return Alarm.findAll().then((alarms) => {
+      alarms.splice(index, 1);
+      return new Promise((resolve, reject) => {
+        FirebaseClient.set(dbPath, 'data', alarms, (err) => {
+          if (err) {
+            logger.error('Failed to remove alarm.', err);
+            return reject(err);
+          }
+          return resolve();
+        });
+      });
+    });
+  }
+
   create() {
     const data = {
       time: this.time,
