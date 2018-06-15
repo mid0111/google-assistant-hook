@@ -51,4 +51,20 @@ export class AlarmListComponent implements OnInit, OnDestroy {
         });
       });
   }
+
+  removeAlarm(index: number) {
+    this.loading = true;
+    this.alarmService.removeAlarm(index).subscribe(
+      () => {
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+        this.messageService.set({
+          message: 'アラームに失敗しました。',
+          type: MessageType.ERROR,
+          error,
+        });
+      });
+  }
 }

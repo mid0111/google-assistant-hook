@@ -74,6 +74,8 @@ describe('AlarmFormComponent', () => {
       fixture.detectChanges();
       return fixture.whenStable();
     }).then(() => {
+      page.addPageElements();
+
       expect(page.timeInput.value).toBe(requestTime);
       expect(page.addButton.hasAttribute('disabled')).toBeTruthy();
 
@@ -83,6 +85,8 @@ describe('AlarmFormComponent', () => {
       fixture.detectChanges();
       return fixture.whenStable();
     }).then(() => {
+      page.addPageElements();
+
       expect(page.messageInput.value).toBe(requestMessage);
       expect(page.addButton.hasAttribute('disabled')).toBeFalsy();
 
@@ -104,6 +108,7 @@ describe('AlarmFormComponent', () => {
       return fixture.whenStable();
     }).then(() => {
       fixture.detectChanges(); // ngForm 用
+      page.addPageElements();
 
       expect(page.timeInput.value).toBe('');
       expect(page.messageInput.value).toBe('');
@@ -144,6 +149,7 @@ describe('AlarmFormComponent', () => {
       return fixture.whenStable();
     }).then(() => {
       fixture.detectChanges(); // ngForm 用
+      page.addPageElements();
 
       expect(page.timeInput.value).toBe(requestTime);
       expect(page.messageInput.value).toBe(requestMessage);
