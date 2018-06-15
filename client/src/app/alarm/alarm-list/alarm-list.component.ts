@@ -61,7 +61,7 @@ export class AlarmListComponent implements OnInit, OnDestroy {
       (error) => {
         this.loading = false;
         this.messageService.set({
-          message: 'アラームに失敗しました。',
+          message: 'アラームの削除に失敗しました。',
           type: MessageType.ERROR,
           error,
         });
