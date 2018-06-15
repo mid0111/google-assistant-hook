@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let alarm of alarms">
+    <tr *ngFor="let alarm of alarms; let index = index">
       <td class="alarm-time">{{alarm.time}}</td>
       <td class="alarm-message">{{alarm.message}}</td>
       <td class="alarm-action text-right">
         <i class="material-icons">create</i>
-        <i class="material-icons">close</i>
+        <i class="material-icons" (click)="removeAlarm(index)">close</i>
       </td>
     </tr>
   </tbody>

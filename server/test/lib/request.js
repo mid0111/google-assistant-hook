@@ -29,6 +29,11 @@ class Request {
     return this;
   }
 
+  delete(...args) {
+    this.result = this.request.delete(args);
+    return this;
+  }
+
   send(data) {
     this.result = this.result.send(data);
     return this;

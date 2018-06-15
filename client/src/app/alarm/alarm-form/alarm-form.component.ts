@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlarmService } from '../../model/alarm.service';
 import { MessageService } from '../../model/message.service';
 import { MessageType } from '../../model/message';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-alarm-form',
@@ -21,7 +22,7 @@ export class AlarmFormComponent implements OnInit {
 
   ngOnInit() { }
 
-  onSubmit() {
+  onSubmit(alarmForm: NgForm) {
     this.loading = true;
     const alarm = {
       time: this.time,
@@ -30,9 +31,8 @@ export class AlarmFormComponent implements OnInit {
     this.alarmService.add(alarm)
       .subscribe(
         () => {
-          this.time = undefined;
-          this.message = undefined;
           this.loading = false;
+          alarmForm.reset();
         },
         (error) => {
           this.loading = false;

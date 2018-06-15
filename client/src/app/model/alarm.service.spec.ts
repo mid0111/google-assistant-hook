@@ -84,4 +84,30 @@ describe('AlarmService', () => {
     mockAlarms.alarms.push(requestAlarm);
     getRequest.flush(mockAlarms);
   });
+
+  it('アラームを削除できること', () => {
+    const mockAlarms = {
+      alarms: [{
+        time: '08:10',
+        message: 'アラームのメッセージ１',
+      }, {
+        time: '08:12',
+        message: 'アラームのメッセージ２',
+      }],
+    };
+
+    service.removeAlarm(0).subscribe((alarms) => {
+      expect(alarms[0].time).toEqual(mockAlarms.alarms[0].time);
+      expect(alarms[0].message).toEqual(mockAlarms.alarms[0].message);
+    });
+
+    const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/0`);
+    expect(deleteRequest.request.method).toBe('DELETE');
+    deleteRequest.flush({});
+
+    const getRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm`);
+    expect(getRequest.request.method).toBe('GET');
+    mockAlarms.alarms.splice(0, 1);
+    getRequest.flush(mockAlarms);
+  });
 });

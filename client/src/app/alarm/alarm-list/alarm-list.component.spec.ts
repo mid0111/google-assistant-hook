@@ -22,6 +22,9 @@ const mockAlarms = {
   alarms: [{
     time: '08:10',
     message: 'アラームのメッセージ１',
+  }, {
+    time: '08:20',
+    message: 'アラームのメッセージ２',
   }],
 };
 
@@ -57,13 +60,19 @@ describe('AlarmListComponent', () => {
       fixture.detectChanges();
       page.addPageElements();
 
-      expect(page.alarmTimes.length).toBe(1);
-      expect(page.alarmMessages.length).toBe(1);
-      expect(page.alarmActions.length).toBe(1);
+      expect(page.alarmTimes.length).toBe(2);
+      expect(page.alarmMessages.length).toBe(2);
+      expect(page.alarmActions.length).toBe(2);
+
       expect(page.getAlarm(0).time).toBe(mockAlarms.alarms[0].time);
       expect(page.getAlarm(0).message).toBe(mockAlarms.alarms[0].message);
       expect(page.getAlarm(0).createButton).toBeTruthy();
       expect(page.getAlarm(0).removeButton).toBeTruthy();
+
+      expect(page.getAlarm(1).time).toBe(mockAlarms.alarms[1].time);
+      expect(page.getAlarm(1).message).toBe(mockAlarms.alarms[1].message);
+      expect(page.getAlarm(1).createButton).toBeTruthy();
+      expect(page.getAlarm(1).removeButton).toBeTruthy();
     });
   }));
 
@@ -88,6 +97,106 @@ describe('AlarmListComponent', () => {
         type: MessageType.ERROR,
         error: testError,
       });
+    });
+  }));
+
+  it('アラーム削除ができること', async(() => {
+    fixture.detectChanges();
+    const getRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm`);
+    expect(getRequest.request.method).toEqual('GET');
+    getRequest.flush(mockAlarms);
+    httpMock.verify();
+
+    const mockAlarmsAfterDelete = {
+      alarms: [{
+        time: '08:10',
+        message: 'アラームのメッセージ１',
+      }],
+    };
+
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      page.addPageElements();
+
+      page.getAlarm(1).removeButton.click();
+
+      fixture.detectChanges();
+      const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/1`);
+      expect(deleteRequest.request.method).toEqual('DELETE');
+      deleteRequest.flush({});
+
+      const getRequestAfterDelete = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm`);
+      expect(getRequestAfterDelete.request.method).toEqual('GET');
+      getRequestAfterDelete.flush(mockAlarmsAfterDelete);
+      httpMock.verify();
+
+      return fixture.whenStable();
+    }).then(() => {
+      fixture.detectChanges(); // loading 用
+      return fixture.whenStable();
+    }).then(() => {
+      fixture.detectChanges(); // ngForm 用
+      page.addPageElements();
+
+      expect(page.alarmTimes.length).toBe(1);
+      expect(page.alarmMessages.length).toBe(1);
+      expect(page.alarmActions.length).toBe(1);
+
+      expect(page.getAlarm(0).time).toBe(mockAlarmsAfterDelete.alarms[0].time);
+      expect(page.getAlarm(0).message).toBe(mockAlarmsAfterDelete.alarms[0].message);
+      expect(page.getAlarm(0).createButton).toBeTruthy();
+      expect(page.getAlarm(0).removeButton).toBeTruthy();
+    });
+  }));
+
+  it('アラーム削除でエラーが発生した場合メッセージが表示されること', async(() => {
+    const testError = new Error('Test error');
+    spyOn(messageService, 'set');
+    spyOn(alarmService, 'removeAlarm')
+      .and.returnValue(new Observable(
+        (subscriber) => subscriber.error(testError)));
+
+    fixture.detectChanges();
+    const getRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm`);
+    expect(getRequest.request.method).toEqual('GET');
+    getRequest.flush(mockAlarms);
+    httpMock.verify();
+
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      page.addPageElements();
+
+      page.getAlarm(1).removeButton.click();
+
+      fixture.detectChanges();
+      return fixture.whenStable();
+    }).then(() => {
+      fixture.detectChanges(); // loading 用
+      return fixture.whenStable();
+    }).then(() => {
+      fixture.detectChanges(); // ngForm 用
+      page.addPageElements();
+
+      expect(page.alarmTimes.length).toBe(2);
+      expect(page.alarmMessages.length).toBe(2);
+      expect(page.alarmActions.length).toBe(2);
+
+      expect(page.getAlarm(0).time).toBe(mockAlarms.alarms[0].time);
+      expect(page.getAlarm(0).message).toBe(mockAlarms.alarms[0].message);
+      expect(page.getAlarm(0).createButton).toBeTruthy();
+      expect(page.getAlarm(0).removeButton).toBeTruthy();
+
+      expect(page.getAlarm(1).time).toBe(mockAlarms.alarms[1].time);
+      expect(page.getAlarm(1).message).toBe(mockAlarms.alarms[1].message);
+      expect(page.getAlarm(1).createButton).toBeTruthy();
+      expect(page.getAlarm(1).removeButton).toBeTruthy();
+
+      expect(messageService.set).toHaveBeenCalledWith({
+        message: 'アラームの削除に失敗しました。',
+        type: MessageType.ERROR,
+        error: testError,
+      });
+
     });
   }));
 });

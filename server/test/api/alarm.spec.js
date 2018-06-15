@@ -117,4 +117,52 @@ describe('/api/alarm', () => {
       .end(done);
   });
 
+  it('Alarm 削除ができること', (done) => {
+    const mockData = [{
+        time: '08:12',
+        message: 'サンプルメッセージ１'
+      },
+      {
+        time: '08:14',
+        message: 'サンプルメッセージ２'
+      }
+    ];
+    request.sandbox.stub(FirebaseClient, 'get')
+      .callsFake((path, callback) => callback(null, mockData));
+    request.sandbox.stub(FirebaseClient, 'set')
+      .callsFake((path, column, data, callback) => callback(null));
+
+    request
+      .delete('/api/alarm/1')
+      .expect(204)
+      .end(done);
+  });
+
+  it('Alarm 削除でエラーが発生した場合 500 エラーとなること', (done) => {
+    const mockData = [{
+        time: '08:12',
+        message: 'サンプルメッセージ１'
+      },
+      {
+        time: '08:14',
+        message: 'サンプルメッセージ２'
+      }
+    ];
+    request.sandbox.stub(FirebaseClient, 'get')
+      .callsFake((path, callback) => callback(null, mockData));
+    const mockError = new Error('test error');
+    request.sandbox.stub(FirebaseClient, 'set')
+      .callsFake((path, column, data, callback) => callback(mockError));
+
+    request
+      .delete('/api/alarm/1')
+      .expect(500)
+      .expect((res) => {
+        assert.deepStrictEqual(res.body, {
+          message: mockError.message
+        });
+      })
+      .end(done);
+  });
+
 });
