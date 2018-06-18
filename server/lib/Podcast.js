@@ -1,15 +1,10 @@
 const FeedParser = require('feedparser');
 const request = require('request');
-const googleHome = require('google-home-notifier');
+const googleHome = require('./GoogleHome');
 
 const Logger = require('./Logger');
-const config = require('../config/app.json');
 
 const logger = new Logger();
-
-const lang = 'ja';
-const ip = config.googleHome.ip;
-googleHome.ip(ip, lang);
 
 class Podcast {
   static play(data) {

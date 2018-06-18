@@ -1,14 +1,9 @@
 const express = require('express');
-const googleHome = require('google-home-notifier');
+const googleHome = require('../../lib/GoogleHome');
 const request = require('request');
 const HttpStatus = require('http-status');
 
 const Logger = require('../../lib/Logger');
-const config = require('../../config/app.json');
-
-const lang = 'ja';
-const ip = config.googleHome.ip;
-googleHome.ip(ip, lang);
 
 const router = express.Router();
 const logger = new Logger();
