@@ -65,4 +65,11 @@ app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
 var FirebaseHook = require('./lib/FirebaseHook');
 FirebaseHook.watch();
 
+// アラームの設定
+const Alarm = require('./lib/Alarm');
+const googleHome = require('./lib/GoogleHome');
+Alarm.watch((alarm) => {
+  googleHome.notify(`${alarm.time}です。${alarm.message} ${alarm.message}`);
+});
+
 module.exports = app;
