@@ -47,6 +47,26 @@ class Alarm {
     });
   }
 
+  static watch(actionFn) {
+    setInterval(function() {
+      Alarm.findAll().then((alarms) => {
+        var now = new Date();
+        var hour = now.getHours();
+        var sec = now.getSeconds();
+        var minute = now.getMinutes();
+
+        alarms.forEach((alarm) => {
+          const alarmHour = Number(alarm.time.substr(0, 2));
+          const alarmMinute = Number(alarm.time.substr(3, 2));
+          if (hour === alarmHour && minute === alarmMinute && sec === 0) {
+            actionFn(alarm);
+          }
+        });
+      });
+    }, 1000);
+
+  }
+
   create() {
     const data = {
       time: this.time,
