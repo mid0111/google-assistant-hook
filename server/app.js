@@ -68,8 +68,12 @@ FirebaseHook.watch();
 // アラームの設定
 const Alarm = require('./lib/Alarm');
 const googleHome = require('./lib/GoogleHome');
+const Logger = require('./lib/Logger');
+const logger = new Logger();
 Alarm.watch((alarm) => {
-  googleHome.notify(`${alarm.time}です。${alarm.message} ${alarm.message}`);
+  googleHome.notify(`${alarm.time}です。${alarm.message} ${alarm.message}`, (notifyRes) => {
+    logger.info(notifyRes);
+  });
 });
 
 module.exports = app;
