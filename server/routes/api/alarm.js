@@ -36,6 +36,21 @@ router.post('/', function(req, res) {
     });
 });
 
+router.put('/:id', function(req, res) {
+  Alarm.updateAt(req.params.id, {
+      time: req.body.time,
+      message: req.body.message
+    }).then(() => {
+      res.status(HttpStatus.NO_CONTENT).send();
+    })
+    .catch((err) => {
+      res.status(err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({
+          message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
+        });
+    });
+});
+
 router.delete('/:id', function(req, res) {
   Alarm.deleteAt(req.params.id).then(() => {
       res.status(HttpStatus.NO_CONTENT).send();

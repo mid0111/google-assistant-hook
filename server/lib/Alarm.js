@@ -36,6 +36,33 @@ class Alarm {
     });
   }
 
+  static updateAt(id, newAlarm) {
+    let found = false;
+    return Alarm.findAll().then((alarms) => {
+      alarms.forEach((alarm) => {
+        if (alarm.id === id) {
+          alarm.time = newAlarm.time;
+          alarm.message = newAlarm.message;
+          found = true;
+        }
+      });
+      return new Promise((resolve, reject) => {
+        if (!found) {
+          const notFound = new Error(HTTPStatus[HTTPStatus.NOT_FOUND]);
+          notFound.statusCode = HTTPStatus.NOT_FOUND;
+          reject(notFound);
+        }
+        FirebaseClient.set(dbPath, 'data', alarms, (err) => {
+          if (err) {
+            logger.error('Failed to remove alarm.', err);
+            return reject(err);
+          }
+          return resolve();
+        });
+      });
+    });
+  }
+
   static deleteAt(id) {
     let found = false;
     return Alarm.findAll().then((alarms) => {
