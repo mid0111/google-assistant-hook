@@ -1,4 +1,6 @@
 const _ = require('lodash');
+const uuidv4 = require('uuid/v4');
+const HTTPStatus = require('http-status');
 const FirebaseClient = require('./FirebaseClient');
 const config = require('../config/app.json');
 var Logger = require('./Logger');
@@ -8,13 +10,15 @@ const dbPath = config.database.path.appAlarm;
 
 class Alarm {
 
-  constructor(time, message) {
+  constructor(time, message, id) {
     this.time = time;
     this.message = message;
+    this.id = id || uuidv4();
   }
 
   get() {
     return {
+      id: this.id,
       time: this.time,
       message: this.message
     };
@@ -27,15 +31,26 @@ class Alarm {
           logger.error('Failed to get alarm list.', err);
           return reject(err);
         }
-        return resolve(_.map(value, (data) => new Alarm(data.time, data.message)));
+        return resolve(_.map(value, (data) => new Alarm(data.time, data.message, data.id)));
       });
     });
   }
 
-  static deleteAt(index) {
+  static deleteAt(id) {
+    let found = false;
     return Alarm.findAll().then((alarms) => {
-      alarms.splice(index, 1);
+      alarms.forEach((alarm, index) => {
+        if (alarm.id === id) {
+          alarms.splice(index, 1);
+          found = true;
+        }
+      });
       return new Promise((resolve, reject) => {
+        if (!found) {
+          const notFound = new Error(HTTPStatus[HTTPStatus.NOT_FOUND]);
+          notFound.statusCode = HTTPStatus.NOT_FOUND;
+          reject(notFound);
+        }
         FirebaseClient.set(dbPath, 'data', alarms, (err) => {
           if (err) {
             logger.error('Failed to remove alarm.', err);
@@ -69,6 +84,7 @@ class Alarm {
 
   create() {
     const data = {
+      id: this.id,
       time: this.time,
       message: this.message
     };
@@ -85,7 +101,7 @@ class Alarm {
             logger.error('Failed to add alarm.', err);
             return reject(err);
           }
-          return resolve();
+          return resolve(data);
         });
       });
     });

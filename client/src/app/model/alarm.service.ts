@@ -20,6 +20,7 @@ export class AlarmService {
       .map((res) => {
         return res['alarms'].map((alarm) => {
           return {
+            id: alarm.id,
             time: alarm.time,
             message: alarm.message,
           } as Alarm;

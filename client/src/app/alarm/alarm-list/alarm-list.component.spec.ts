@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+const uuidv4 = require('uuid/v4');
 
 import { AlarmListComponent } from './alarm-list.component';
 import { AlarmService } from '../../model/alarm.service';
@@ -20,9 +21,11 @@ let page: Page;
 
 const mockAlarms = {
   alarms: [{
+    id: uuidv4(),
     time: '08:10',
     message: 'アラームのメッセージ１',
   }, {
+    id: uuidv4(),
     time: '08:20',
     message: 'アラームのメッセージ２',
   }],
@@ -109,8 +112,9 @@ describe('AlarmListComponent', () => {
 
     const mockAlarmsAfterDelete = {
       alarms: [{
-        time: '08:10',
-        message: 'アラームのメッセージ１',
+        id: mockAlarms.alarms[0].id,
+        time: mockAlarms.alarms[0].time,
+        message: mockAlarms.alarms[0].message,
       }],
     };
 
@@ -121,7 +125,7 @@ describe('AlarmListComponent', () => {
       page.getAlarm(1).removeButton.click();
 
       fixture.detectChanges();
-      const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/1`);
+      const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/${mockAlarms.alarms[1].id}`);
       expect(deleteRequest.request.method).toEqual('DELETE');
       deleteRequest.flush({});
 
