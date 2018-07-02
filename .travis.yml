@@ -41,5 +41,3 @@ deploy:
   skip_cleanup: true
   on:
     repo: mid0111/google-assistant-hook
-    tags: true
-    all_branches: true
