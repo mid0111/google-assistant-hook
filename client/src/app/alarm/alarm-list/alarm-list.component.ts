@@ -14,8 +14,8 @@ import { MessageType } from '../../model/message';
 export class AlarmListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
-  private alarms: Alarm[];
-  private loading = true;
+  alarms: Alarm[];
+  loading = true;
 
   constructor(
     private alarmService: AlarmService,
