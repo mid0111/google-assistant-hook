@@ -52,9 +52,33 @@ export class AlarmListComponent implements OnInit, OnDestroy {
       });
   }
 
-  removeAlarm(index: number) {
+  toggleEditing(alarm: Alarm) {
+    if (alarm.editing) {
+      this.updateAlarm(alarm);
+    }
+    alarm.editing = !alarm.editing;
+  }
+
+  updateAlarm(alarm: Alarm) {
     this.loading = true;
-    this.alarmService.removeAlarm(index).subscribe(
+    this.alarmService.updateAlarm(alarm.id, alarm).subscribe(
+      () => {
+        this.loading = false;
+        alarm.editing = false;
+      },
+      (error) => {
+        this.loading = false;
+        this.messageService.set({
+          message: 'アラームの更新に失敗しました。',
+          type: MessageType.ERROR,
+          error,
+        });
+      });
+  }
+
+  removeAlarm(id: String) {
+    this.loading = true;
+    this.alarmService.removeAlarm(id).subscribe(
       () => {
         this.loading = false;
       },

@@ -9,10 +9,22 @@
   </thead>
   <tbody>
     <tr *ngFor="let alarm of alarms">
-      <td class="alarm-time">{{alarm.time}}</td>
-      <td class="alarm-message">{{alarm.message}}</td>
+      <td class="alarm-time">
+        <div *ngIf="!alarm.editing; else editTimeBlock">{{alarm.time}}</div>
+        <ng-template #editTimeBlock>
+          <input [(ngModel)]="alarm.time" required type="time" class="form-control"
+            id="time" name="time">
+        </ng-template>
+      </td>
+      <td class="alarm-message">
+        <div *ngIf="!alarm.editing; else editMessageBlock">{{alarm.message}}</div>
+        <ng-template #editMessageBlock>
+          <input [(ngModel)]="alarm.message" required type="text" class="form-control"
+            id="message" name="message">
+        </ng-template>
+      </td>
       <td class="alarm-action text-right">
-        <i class="material-icons">create</i>
+        <i class="material-icons" (click)="toggleEditing(alarm, alarms)">create</i>
         <i class="material-icons" (click)="removeAlarm(alarm.id)">close</i>
       </td>
     </tr>

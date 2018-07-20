@@ -211,8 +211,8 @@ class Page {
   alarmActions: DebugElement[];
 
   addPageElements() {
-    this.alarmTimes = fixture.debugElement.queryAll(By.css('.alarm-time'));
-    this.alarmMessages = fixture.debugElement.queryAll(By.css('.alarm-message'));
+    this.alarmTimes = fixture.debugElement.queryAll(By.css('.alarm-time div'));
+    this.alarmMessages = fixture.debugElement.queryAll(By.css('.alarm-message div'));
     this.alarmActions = fixture.debugElement.queryAll(By.css('.alarm-action'));
   }
 

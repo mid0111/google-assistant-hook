@@ -46,13 +46,14 @@ class Alarm {
           found = true;
         }
       });
+      const newAlarms = _.sortBy(alarms, [(alarm) => alarm.time]);
       return new Promise((resolve, reject) => {
         if (!found) {
           const notFound = new Error(HTTPStatus[HTTPStatus.NOT_FOUND]);
           notFound.statusCode = HTTPStatus.NOT_FOUND;
           reject(notFound);
         }
-        FirebaseClient.set(dbPath, 'data', alarms, (err) => {
+        FirebaseClient.set(dbPath, 'data', newAlarms, (err) => {
           if (err) {
             logger.error('Failed to remove alarm.', err);
             return reject(err);
