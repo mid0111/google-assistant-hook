@@ -13,10 +13,10 @@ import { MessageType } from '../../model/message';
 })
 export class AlarmListComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
-  private alarms: Alarm[];
-  private loading = true;
-  private beforeUpdateAlarm: Alarm;
+  subscription: Subscription;
+  alarms: Alarm[];
+  loading = true;
+  beforeUpdateAlarm: Alarm;
 
   constructor(
     private alarmService: AlarmService,
