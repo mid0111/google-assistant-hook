@@ -16,6 +16,7 @@ export class AlarmListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private alarms: Alarm[];
   private loading = true;
+  private beforeUpdateAlarm: Alarm;
 
   constructor(
     private alarmService: AlarmService,
@@ -55,6 +56,8 @@ export class AlarmListComponent implements OnInit, OnDestroy {
   toggleEditing(alarm: Alarm) {
     if (alarm.editing) {
       this.updateAlarm(alarm);
+    } else {
+      this.beforeUpdateAlarm = Object.assign({}, alarm);
     }
     alarm.editing = !alarm.editing;
   }
@@ -64,9 +67,10 @@ export class AlarmListComponent implements OnInit, OnDestroy {
     this.alarmService.updateAlarm(alarm.id, alarm).subscribe(
       () => {
         this.loading = false;
-        alarm.editing = false;
       },
       (error) => {
+        alarm.time = this.beforeUpdateAlarm.time;
+        alarm.message = this.beforeUpdateAlarm.message;
         this.loading = false;
         this.messageService.set({
           message: 'アラームの更新に失敗しました。',
