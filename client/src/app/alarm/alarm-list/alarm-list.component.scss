@@ -1,5 +1,11 @@
 table {
   vertical-align: middle;
+  td {
+    min-width: 160px;
+  }
+  input {
+    height: 24px;
+  }
 }
 
 .alarm-action {

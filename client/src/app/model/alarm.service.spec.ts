@@ -1,5 +1,6 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+const uuidv4 = require('uuid/v4');
 
 import { SharedModule } from '../shared/shared.module';
 import { AlarmService } from './alarm.service';
@@ -31,9 +32,11 @@ describe('AlarmService', () => {
   it('アラーム一覧を取得できること', () => {
     const mockAlarms = {
       alarms: [{
+        id: uuidv4(),
         time: '08:10',
         message: 'アラームのメッセージ１',
       }, {
+        id: uuidv4(),
         time: '08:12',
         message: 'アラームのメッセージ２',
       }],
@@ -59,9 +62,11 @@ describe('AlarmService', () => {
     };
     const mockAlarms = {
       alarms: [{
+        id: uuidv4(),
         time: '08:10',
         message: 'アラームのメッセージ１',
       }, {
+        id: uuidv4(),
         time: '08:12',
         message: 'アラームのメッセージ２',
       }],
@@ -81,27 +86,33 @@ describe('AlarmService', () => {
 
     const getRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm`);
     expect(getRequest.request.method).toBe('GET');
-    mockAlarms.alarms.push(requestAlarm);
+    mockAlarms.alarms.push({
+      id: uuidv4(),
+      time: requestAlarm.time,
+      message: requestAlarm.message,
+    });
     getRequest.flush(mockAlarms);
   });
 
   it('アラームを削除できること', () => {
     const mockAlarms = {
       alarms: [{
+        id: uuidv4(),
         time: '08:10',
         message: 'アラームのメッセージ１',
       }, {
+        id: uuidv4(),
         time: '08:12',
         message: 'アラームのメッセージ２',
       }],
     };
 
-    service.removeAlarm(0).subscribe((alarms) => {
+    service.removeAlarm(mockAlarms.alarms[0].id).subscribe((alarms) => {
       expect(alarms[0].time).toEqual(mockAlarms.alarms[0].time);
       expect(alarms[0].message).toEqual(mockAlarms.alarms[0].message);
     });
 
-    const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/0`);
+    const deleteRequest = httpMock.expectOne(`${AppSettings.API_ENDPOINT}/alarm/${mockAlarms.alarms[0].id}`);
     expect(deleteRequest.request.method).toBe('DELETE');
     deleteRequest.flush({});
 

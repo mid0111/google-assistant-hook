@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
       });
     })
     .catch((err) => {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      res.status(err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR)
         .json({
           message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
         });
@@ -21,26 +21,42 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   const alarm = new Alarm(req.body.time, req.body.message);
-  alarm.create().then(() => {
+  alarm.create().then((result) => {
       res.status(HttpStatus.CREATED).json({
+        id: result.id,
         time: req.body.time,
         message: req.body.message
       });
     })
     .catch((err) => {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      res.status(err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR)
         .json({
           message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
         });
     });
 });
 
-router.delete('/:index', function(req, res) {
-  Alarm.deleteAt(req.params.index).then(() => {
+router.put('/:id', function(req, res) {
+  Alarm.updateAt(req.params.id, {
+      time: req.body.time,
+      message: req.body.message
+    }).then(() => {
       res.status(HttpStatus.NO_CONTENT).send();
     })
     .catch((err) => {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      res.status(err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({
+          message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
+        });
+    });
+});
+
+router.delete('/:id', function(req, res) {
+  Alarm.deleteAt(req.params.id).then(() => {
+      res.status(HttpStatus.NO_CONTENT).send();
+    })
+    .catch((err) => {
+      res.status(err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR)
         .json({
           message: err.message || HttpStatus[HttpStatus.INTERNAL_SERVER_ERROR]
         });

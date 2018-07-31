@@ -20,6 +20,7 @@ export class AlarmService {
       .map((res) => {
         return res['alarms'].map((alarm) => {
           return {
+            id: alarm.id,
             time: alarm.time,
             message: alarm.message,
           } as Alarm;
@@ -36,8 +37,13 @@ export class AlarmService {
       .mergeMap(() => this.list());
   }
 
-  removeAlarm(index: number): Observable<Alarm[]> {
-    return this.http.delete<void>(`${AppSettings.API_ENDPOINT}/alarm/${index}`)
+  updateAlarm(id: String, alarm: Alarm): Observable<Alarm[]> {
+    return this.http.put<void>(`${AppSettings.API_ENDPOINT}/alarm/${id}`, alarm)
+      .mergeMap(() => this.list());
+  }
+
+  removeAlarm(id: String): Observable<Alarm[]> {
+    return this.http.delete<void>(`${AppSettings.API_ENDPOINT}/alarm/${id}`)
       .mergeMap(() => this.list());
   }
 

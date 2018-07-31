@@ -21,7 +21,9 @@
     "lint:client": "ng lint",
     "e2e": "bash -x ./scripts/e2e.sh"
   },
-  "eslintIgnore": ["server/public/*"],
+  "eslintIgnore": [
+    "server/public/*"
+  ],
   "nodemonConfig": {
     "ignore": [
       "server/test",
@@ -61,6 +63,7 @@
     "request": "^2.83.0",
     "rxjs": "^5.5.2",
     "serve-favicon": "~2.3.0",
+    "uuid": "^3.3.2",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
