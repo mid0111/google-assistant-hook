@@ -1,6 +1,5 @@
 const Bravia = require('bravia');
 
-const IRClient = require('./IRClient');
 const config = require('../config/app.json');
 const secretConfig = require('../config/braviaSecret.json');
 
@@ -24,12 +23,10 @@ class TV {
   }
 
   static on() {
-    IRClient.send(config.ir.audio.name, config.ir.audio.command.on);
     bravia.send('WakeUp');
   }
 
   static off() {
-    IRClient.send(config.ir.audio.name, config.ir.audio.command.off);
     bravia.send('PowerOff');
   }
 }
