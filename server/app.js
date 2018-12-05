@@ -76,4 +76,8 @@ Alarm.watch((alarm) => {
   });
 });
 
+// 雨雲接近情報監視の設定
+const RainForecast = require('./lib/RainForecast');
+RainForecast.watch();
+
 module.exports = app;
