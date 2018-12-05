@@ -4,6 +4,7 @@
     "path": {
       "appShortcut": "app/shortcut",
       "appAlarm": "app/alarm",
+      "appRain": "app/rain",
       "shortcutLog": "shortcut/log",
       "googleFitLog": "google-fit/log",
       "tvLog": "tv/log",
@@ -52,5 +53,15 @@
         "off": "off"
       }
     }
+  },
+  "yolp": {
+    "applicationID": "dj00aiZpPWpjR2dvb0RsMzRuYSZzPWNvbnN1bWVyc2VjcmV0Jng9Y2E-",
+    "weatherPlace": "https://map.yahooapis.jp/weather/V1/place"
+  },
+  "rainForecast": {
+    "lat": "34.989347",
+    "lon": "138.398288",
+    "intervalSec": 300,
+    "threshold": 0
   }
 }
