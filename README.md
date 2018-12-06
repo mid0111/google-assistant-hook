@@ -28,6 +28,10 @@ Google Home を機能拡張するためのサーバです。
 
 * 好きな URL を指定して再生
 
+### 雨雲接近情報の通知
+
+* [YOLP の気象情報 API](https://developer.yahoo.co.jp/webapi/map/openlocalplatform/v1/weather.html) で取得した情報を元に１時間以内に雨が振りそうな場合に通知
+
 ## インストール
 
 1. node (>=8.0.0) インストール
