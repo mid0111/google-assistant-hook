@@ -49,7 +49,6 @@ class RainForecast {
         logger.error('Failed to get raining flag.', err);
         return;
       }
-      console.log('raining', raining);
 
       // １時間以内に雨が降っているかチェック
       const rainFall = this.getRainFall(json);
@@ -77,15 +76,17 @@ class RainForecast {
 
   static getRainFall(json) {
     const weathers = json.Feature[0].Property.WeatherList.Weather;
+    let result = null;
     weathers.forEach((weather) => {
       if (weather.Rainfall > threshold) {
-        return {
+        result = {
           // YYYYMMDDhhmm
           rainDate: `${weather.Date.substr(8, 2)}時${weather.Date.substr(10, 2)}分`,
           rainFall: weather.Rainfall
         };
       }
     });
+    return result;
   }
 }
 
