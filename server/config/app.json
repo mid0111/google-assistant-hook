@@ -62,6 +62,6 @@
     "lat": "34.989347",
     "lon": "138.398288",
     "intervalSec": 300,
-    "threshold": 0
+    "threshold": 0.5
   }
 }
