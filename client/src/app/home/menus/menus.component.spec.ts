@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser';
 import { SharedModule } from '../../shared/shared.module';
 import { MenusComponent } from './menus.component';
 import { ProfileService } from '../../model/profile.service';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs/Observable/of';
 
 let component: MenusComponent;
 let fixture: ComponentFixture<MenusComponent>;
@@ -45,7 +45,7 @@ describe('MenusComponent', () => {
       expect(page.menus[i++].textContent).toBe('OK Google!! 電気をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! 電気を消して!');
 
-      expect(page.loginMessage.nativeElement.textContent).toBe('Google Fit を利用する場合は、あらかじめ\n    Google にログイン してください');
+      expect(page.loginMessage.nativeElement.textContent).toBe('Google Fit を利用する場合は、あらかじめ Google にログイン してください');
     });
   });
 

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs/Observable/of';
 
 import { SharedModule } from '../shared/shared.module';
 import { RebuildComponent } from './rebuild.component';

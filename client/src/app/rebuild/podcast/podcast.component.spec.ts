@@ -7,8 +7,8 @@ import { PodcastComponent } from './podcast.component';
 import { StreamService } from '../../model/stream.service';
 import { MessageService } from '../../model/message.service';
 import { MessageType } from '../../model/message';
-import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/Observable/of';
 
 let component: PodcastComponent;
 let fixture: ComponentFixture<PodcastComponent>;

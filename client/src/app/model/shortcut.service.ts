@@ -1,7 +1,9 @@
+
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+
 
 import { AppSettings } from '../app.settings';
 import { Machine, Shortcut } from './shortcut';
@@ -32,8 +34,8 @@ export class ShortcutService {
   constructor(private http: HttpClient) { }
 
   getShortcuts(): Observable<Shortcut[]> {
-    return this.http.get<Object>(`${AppSettings.API_ENDPOINT}/shortcut`)
-      .map((res) => {
+    return this.http.get<Object>(`${AppSettings.API_ENDPOINT}/shortcut`).pipe(
+      map((res) => {
         const results: Shortcut[] = [];
         res['shortcuts'].forEach((shortcut) => {
           if (shortcut.name === 'off') {
@@ -93,7 +95,7 @@ export class ShortcutService {
           }
         });
         return results.sort((a, b) => a.id - b.id);
-      });
+      }));
   }
 
   updateShortcut(shortcut: Shortcut): Observable<void> {
