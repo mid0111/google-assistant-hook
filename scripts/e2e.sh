@@ -7,7 +7,7 @@ function clean {
 node ./server/mock/bin/www &
 SERVER_PID=$!
 
-ng e2e --proxy-config client/proxy-mock.conf.json
+ng e2e --configuration e2e
 EXIT_CODE=$?
 
 trap clean EXIT

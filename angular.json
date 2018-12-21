@@ -41,12 +41,10 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "client/src/environments/environment.ts",
-                  "with": "client/src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "client/src/environments/environment.ts",
+                "with": "client/src/environments/environment.prod.ts"
+              }]
             }
           }
         },
@@ -56,6 +54,10 @@
             "browserTarget": "google-assistant-hook:build"
           },
           "configurations": {
+            "e2e": {
+              "browserTarget": "google-assistant-hook:build",
+              "proxyConfig": "./client/proxy-mock.conf.json"
+            },
             "production": {
               "browserTarget": "google-assistant-hook:build:production"
             }
@@ -113,6 +115,11 @@
           "options": {
             "protractorConfig": "./client/protractor.conf.js",
             "devServerTarget": "google-assistant-hook:serve"
+          },
+          "configurations": {
+            "e2e": {
+              "devServerTarget": "google-assistant-hook:serve:e2e"
+            }
           }
         },
         "lint": {
