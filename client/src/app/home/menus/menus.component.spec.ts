@@ -45,7 +45,7 @@ describe('MenusComponent', () => {
       expect(page.menus[i++].textContent).toBe('OK Google!! 電気をつけて!');
       expect(page.menus[i++].textContent).toBe('OK Google!! 電気を消して!');
 
-      expect(page.loginMessage.nativeElement.textContent).toBe('Google Fit を利用する場合は、あらかじめ\n    Google にログイン してください');
+      expect(page.loginMessage.nativeElement.textContent).toBe('Google Fit を利用する場合は、あらかじめ Google にログイン してください');
     });
   });
 

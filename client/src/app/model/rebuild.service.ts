@@ -1,7 +1,9 @@
+
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+
 
 import { AppSettings } from '../app.settings';
 import { Rebuild } from './rebuild';
@@ -13,8 +15,8 @@ export class RebuildService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<Rebuild> {
-    return this.http.get<Object>(`${AppSettings.API_ENDPOINT}/rebuild`)
-      .map((rebuild) => {
+    return this.http.get<Object>(`${AppSettings.API_ENDPOINT}/rebuild`).pipe(
+      map((rebuild) => {
         const podcasts = rebuild['podcasts'].map((podcast) => {
           const pubDate = new Date(podcast.pubDate);
           return {
@@ -26,6 +28,6 @@ export class RebuildService {
           } as Podcast;
         });
         return { podcasts };
-      });
+      }));
   }
 }
