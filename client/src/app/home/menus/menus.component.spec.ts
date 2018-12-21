@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser';
 import { SharedModule } from '../../shared/shared.module';
 import { MenusComponent } from './menus.component';
 import { ProfileService } from '../../model/profile.service';
-import { of } from 'rxjs/Observable/of';
+import { of } from 'rxjs/observable/of';
 
 let component: MenusComponent;
 let fixture: ComponentFixture<MenusComponent>;

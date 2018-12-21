@@ -7,8 +7,8 @@ import { StreamFormComponent } from './stream-form.component';
 import { StreamService } from '../../model/stream.service';
 import { MessageService } from '../../model/message.service';
 import { MessageType } from '../../model/message';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
+import { Observable } from 'rxjs/observable';
+import { of } from 'rxjs/observable/of';
 
 let component: StreamFormComponent;
 let fixture: ComponentFixture<StreamFormComponent>;

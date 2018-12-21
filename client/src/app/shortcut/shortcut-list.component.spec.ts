@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { of } from 'rxjs/Observable/of';
+import { of } from 'rxjs/observable/of';
 
 import { ShortcutListComponent } from './shortcut-list.component';
 import { ShortcutService, ShortcutImpl } from '../model/shortcut.service';

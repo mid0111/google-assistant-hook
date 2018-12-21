@@ -1,8 +1,8 @@
 
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
+import { Observable } from 'rxjs/observable';
+import { of } from 'rxjs/observable/of';
 
 
 import { Extension } from './extension';

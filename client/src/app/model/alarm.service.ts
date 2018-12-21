@@ -2,7 +2,7 @@
 import { mergeMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/observable';
 import { Subject } from 'rxjs/Subject';
 
 

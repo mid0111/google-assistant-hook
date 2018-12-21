@@ -7,7 +7,7 @@ import { AlarmService } from '../../model/alarm.service';
 import { SharedModule } from '../../shared/shared.module';
 import { MessageService } from '../../model/message.service';
 import { AppSettings } from '../../app.settings';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/observable';
 import { MessageType } from '../../model/message';
 
 let component: AlarmFormComponent;
