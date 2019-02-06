@@ -50,9 +50,9 @@ class RainForecast {
         return;
       }
 
-      // １時間以内に雨が降っているかチェック
+      // 雨が降っているかどうかを取得
       const rainFall = this.getRainFall(json);
-      if (rainFall && !raining) {
+      if (rainFall > threshold && !raining) {
         // 前回チェック時に雨が降っておらず３０分以内に雨が降り出しそうな場合は通知
         FirebaseClient.set(dbPath, 'raining', true, (setError) => {
           if (setError) {
@@ -80,13 +80,14 @@ class RainForecast {
     // 実測値はスキップして 10〜30 分後の予報を確認
     for (let i = 1; i < 4; i += 1) {
       const weather = weathers[i];
-      if (weather.Rainfall > threshold) {
-        result = {
-          // YYYYMMDDhhmm
-          rainDate: `${weather.Date.substr(8, 2)}時${weather.Date.substr(10, 2)}分`,
-          rainFall: weather.Rainfall
-        };
-        break;
+      if (weather.Rainfall > 0) {
+        if (!result || (result && result.rainFall <= weather.Rainfall)) {
+          result = {
+            // YYYYMMDDhhmm
+            rainDate: `${weather.Date.substr(8, 2)}時${weather.Date.substr(10, 2)}分`,
+            rainFall: weather.Rainfall
+          };
+        }
       }
     }
     return result;
