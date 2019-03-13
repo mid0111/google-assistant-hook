@@ -52,7 +52,7 @@ class RainForecast {
 
       // 雨が降っているかどうかを取得
       const rainFall = this.getRainFall(json);
-      if (rainFall > threshold && !raining) {
+      if (rainFall && rainFall.rainFall > threshold && !raining) {
         // 前回チェック時に雨が降っておらず３０分以内に雨が降り出しそうな場合は通知
         FirebaseClient.set(dbPath, 'raining', true, (setError) => {
           if (setError) {
