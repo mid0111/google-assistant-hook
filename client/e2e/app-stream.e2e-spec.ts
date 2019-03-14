@@ -19,8 +19,8 @@ describe('google-assistant-hook app-stream', () => {
   });
 
   it('URL を入力できること', () => {
-    page.urlInput.sendKeys('http://dummy.com/dummy.mp3');
-    expect(page.urlInput.getAttribute('value')).toEqual('http://dummy.com/dummy.mp3');
+    page.urlInput.sendKeys('http://example.com/dummy.mp3');
+    expect(page.urlInput.getAttribute('value')).toEqual('http://example.com/dummy.mp3');
     expect(page.submitButton.getAttribute('disabled')).toBeFalsy();
 
     page.submitButton.click();

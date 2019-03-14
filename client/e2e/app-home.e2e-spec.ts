@@ -48,7 +48,7 @@ describe('google-assistant-hook app-home', () => {
     page.loginLink.click();
 
     browser.sleep(500);
-    expect(browser.getCurrentUrl()).toMatch(/https:\/\/dummy.com\/oauth/);
+    expect(browser.getCurrentUrl()).toMatch(/https:\/\/example.com\/oauth/);
   });
 
   it('Shortcut ボタン押下で shortcut ページに遷移すること', () => {

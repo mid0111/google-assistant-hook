@@ -31,7 +31,7 @@ describe('StreamService', () => {
 
   it('Stream を再生できること', () => {
     const requestStream: Stream = {
-      url: 'http://dummy.com/dummy.mp3',
+      url: 'http://example.com/dummy.mp3',
     };
 
     service.play(requestStream).subscribe((res) => {

@@ -40,7 +40,7 @@ describe('StreamFormComponent', () => {
   });
 
   it('URL を入力すると再生ボタンが押下できること', async(() => {
-    const requestUrl = 'http://dummy.com/dummy.mp3';
+    const requestUrl = 'http://example.com/dummy.mp3';
     spyOn(messageService, 'set');
     spyOn(streamService, 'play')
       .and.returnValue(of(null));
@@ -75,7 +75,7 @@ describe('StreamFormComponent', () => {
   }));
 
   it('再生でエラーが発生した場合エラーメッセージがセットされること', async(() => {
-    const requestUrl = 'http://dummy.com/dummy.mp3';
+    const requestUrl = 'http://example.com/dummy.mp3';
     const testError = new Error('Test error');
     spyOn(messageService, 'set');
     spyOn(streamService, 'play')
