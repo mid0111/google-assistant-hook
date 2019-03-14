@@ -6,7 +6,7 @@ const Request = require('../lib/request');
 describe('/api/stream', () => {
   const request = new Request();
 
-  const streamRootUrl = 'http://dummy.com';
+  const streamRootUrl = 'http://example.com';
   const streamPath = '/stream';
 
   beforeEach(() => {
@@ -66,12 +66,12 @@ describe('/api/stream', () => {
     request
       .post('/api/stream')
       .send({
-        url: `://dummy.com ${streamPath}`
+        url: `://example.com ${streamPath}`
       })
       .expect(503)
       .expect((res) => {
         assert.deepStrictEqual(res.body, {
-          message: 'Invalid URI "://dummy.com%20/stream"'
+          message: 'Invalid URI "://example.com%20/stream"'
         });
       })
       .end(done);
