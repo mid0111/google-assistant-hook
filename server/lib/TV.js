@@ -26,8 +26,11 @@ class TV {
         this.hdmi1();
         break;
 
+      case 'volume':
+        this.setVolume(data.volumeLevel);
+        break;
+
       default:
-        // on/off 以外のデータの場合何もしない
         break;
     }
   }
@@ -52,6 +55,13 @@ class TV {
     bravia.send('WakeUp')
       .then(() => bravia.send('Hdmi1'))
       .catch((err) => logger.error('Failed to send command to TV.', err));
+  }
+
+  static setVolume(level) {
+    bravia.audio.invoke('setAudioVolume', '1.0', {
+      target: 'speaker',
+      volume: String(level)
+    });
   }
 }
 
